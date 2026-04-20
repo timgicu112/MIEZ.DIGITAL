@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termeni și Condiții · Miez Digital</title>
+<meta name="description" content="Termenii și condițiile de utilizare a serviciilor Miez Digital.">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --chihlimbar: #D4A574;
+  --chihlimbar-dark: #B88855;
+  --crem: #F5F0E6;
+  --crem-soft: #EDE5D4;
+  --negru: #1A1A1A;
+  --negru-soft: #2E2823;
+  --caramida: #B33A3A;
+  --gri: #8B8178;
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--crem);
+  color: var(--negru);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+.nav { padding: 20px 0; border-bottom: 1px solid rgba(26,26,26,0.08); background: rgba(245, 240, 230, 0.95); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--negru); }
+.logo-chip { width: 48px; height: 48px; background: var(--negru); border-radius: 6px; display: flex; align-items: center; justify-content: center; padding: 6px; box-shadow: 0 2px 12px rgba(26,26,26,0.18); }
+.logo-mark { width: 100%; height: 100%; }
+.logo-text { font-weight: 700; font-size: 20px; letter-spacing: 0.22em; color: var(--negru); line-height: 1; }
+.nav-cta { background: var(--negru); color: var(--crem); padding: 9px 18px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease; }
+.nav-cta:hover { background: var(--caramida); }
+
+.page-header { padding: 80px 0 60px; border-bottom: 1px solid rgba(26,26,26,0.1); }
+.breadcrumb { font-size: 13px; color: var(--gri); margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+.breadcrumb a { color: var(--caramida); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  color: var(--negru);
+}
+.meta-line { font-size: 14px; color: var(--gri); }
+.meta-line strong { color: var(--negru); font-weight: 600; }
+
+.content { padding: 60px 0 100px; }
+.content h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--negru);
+  margin: 56px 0 20px;
+  line-height: 1.25;
+}
+.content h2:first-of-type { margin-top: 0; }
+.content h3 {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--negru);
+  margin: 28px 0 12px;
+}
+.content p { margin-bottom: 18px; color: var(--negru-soft); }
+.content ul, .content ol { margin: 12px 0 24px 24px; color: var(--negru-soft); }
+.content li { margin-bottom: 10px; padding-left: 6px; }
+.content a { color: var(--caramida); text-decoration: underline; text-underline-offset: 2px; }
+.content a:hover { text-decoration-thickness: 2px; }
+.content strong { color: var(--negru); }
+
+.callout {
+  background: var(--crem-soft);
+  border-left: 3px solid var(--chihlimbar);
+  padding: 24px 28px;
+  margin: 28px 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout.warning {
+  border-left-color: var(--caramida);
+  background: rgba(179, 58, 58, 0.06);
+}
+.callout.warning strong { color: var(--caramida); }
+
+.toc {
+  background: var(--crem-soft);
+  padding: 28px 32px;
+  border-radius: 4px;
+  margin-bottom: 56px;
+  border-top: 3px solid var(--chihlimbar);
+}
+.toc-title { font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--caramida); margin-bottom: 16px; }
+.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; font-size: 14px; }
+.toc li { margin-bottom: 6px; color: var(--negru-soft); padding-left: 4px; }
+.toc a { color: var(--negru); text-decoration: none; }
+.toc a:hover { color: var(--caramida); text-decoration: underline; }
+@media (max-width: 640px) { .toc ol { columns: 1; } }
+
+footer { background: var(--negru); color: rgba(245, 240, 230, 0.6); padding: 48px 0; }
+footer .footer-inner { text-align: center; }
+footer p { color: rgba(245, 240, 230, 0.6); font-size: 14px; margin-bottom: 8px; }
+footer a { color: var(--chihlimbar); text-decoration: none; }
+footer a:hover { color: var(--crem); }
+.footer-legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-top: 16px; font-size: 13px; }
+.footer-legal a { color: rgba(245, 240, 230, 0.7); border-bottom: 1px dotted rgba(212, 165, 116, 0.4); padding-bottom: 1px; }
+
+@media (max-width: 640px) {
+  .page-header { padding: 50px 0 40px; }
+  .content { padding: 40px 0 60px; }
+  .content h2 { font-size: 24px; margin-top: 40px; }
+  .toc { padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container-wide">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <div class="logo-chip">
+          <svg class="logo-mark" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"
+               fill="none" stroke="#D4A574" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="28" y1="28" x2="28" y2="172"/><line x1="212" y1="28" x2="212" y2="172"/>
+            <line x1="74" y1="46" x2="74" y2="172"/><line x1="166" y1="46" x2="166" y2="172"/>
+            <line x1="28" y1="28" x2="74" y2="46"/><line x1="212" y1="28" x2="166" y2="46"/>
+            <line x1="74" y1="46" x2="120" y2="132"/><line x1="166" y1="46" x2="120" y2="132"/>
+            <line x1="28" y1="172" x2="74" y2="172"/><line x1="166" y1="172" x2="212" y2="172"/>
+            <line x1="28" y1="28" x2="120" y2="132"/><line x1="212" y1="28" x2="120" y2="132"/>
+            <line x1="28" y1="172" x2="120" y2="132"/><line x1="212" y1="172" x2="120" y2="132"/>
+            <line x1="28" y1="28" x2="74" y2="172"/><line x1="212" y1="28" x2="166" y2="172"/>
+            <line x1="74" y1="46" x2="28" y2="172"/><line x1="166" y1="46" x2="212" y2="172"/>
+            <line x1="28" y1="72" x2="74" y2="72"/><line x1="166" y1="72" x2="212" y2="72"/>
+            <line x1="28" y1="116" x2="74" y2="116"/><line x1="166" y1="116" x2="212" y2="116"/>
+            <circle cx="120" cy="132" r="12" fill="#D4A574" stroke="none"/>
+          </svg>
+        </div>
+        <span class="logo-text">MIEZ</span>
+      </a>
+      <a href="/#inscriere" class="nav-cta">Rezervă locul</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Acasă</a> → Termeni și Condiții</div>
+    <h1>Termeni și Condiții</h1>
+    <p class="meta-line">Ultima actualizare: <strong>20 aprilie 2026</strong> · Versiunea 1.0</p>
+  </div>
+</header>
+
+<main class="content">
+  <div class="container">
+
+    <div class="callout">
+      <p>Pe scurt: acest document descrie cum funcționează contractul dintre tine (participant) și Miez Digital (prestator) pentru atelierele și serviciile noastre. Include ce primești, ce plătești, ce se întâmplă dacă apare o problemă, și cum sunt împărțite responsabilitățile — în special pentru securitatea agenților AI construiți în atelier.</p>
+    </div>
+
+    <nav class="toc" aria-label="Cuprins">
+      <div class="toc-title">Cuprins</div>
+      <ol>
+        <li><a href="#parti">Părțile contractante</a></li>
+        <li><a href="#obiect">Obiectul contractului</a></li>
+        <li><a href="#inscriere">Înscriere și confirmare</a></li>
+        <li><a href="#pret">Preț și plată</a></li>
+        <li><a href="#livrare">Ce primești concret</a></li>
+        <li><a href="#garantie">Garanția meșterului</a></li>
+        <li><a href="#obligatii-p">Obligațiile participantului</a></li>
+        <li><a href="#obligatii-m">Obligațiile Miez</a></li>
+        <li><a href="#ip">Proprietate intelectuală</a></li>
+        <li><a href="#raspundere">Limitarea răspunderii</a></li>
+        <li><a href="#forta-majora">Forța majoră</a></li>
+        <li><a href="#date">Protecția datelor</a></li>
+        <li><a href="#modificari">Modificări ale termenilor</a></li>
+        <li><a href="#dispute">Soluționarea disputelor</a></li>
+        <li><a href="#final">Dispoziții finale</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="parti">1. Părțile contractante</h2>
+    <p>Acești termeni și condiții („<strong>Termenii</strong>") guvernează relația contractuală între:</p>
+    <ul>
+      <li><strong>Prestator</strong> — <strong>Societatea cu Răspundere Limitată SOFT VIBE</strong> (SOFT VIBE S.R.L.), IDNO 1025607002647, înregistrată în Republica Moldova la data de 16 iunie 2025, rezident al <strong>Parcului IT Moldova</strong> (conform Legii nr. 77/2016), cu sediul în or. Drochia, str. Mitropolit Varlaam nr. 115, Republica Moldova, email <a href="mailto:contact@miez.digital">contact@miez.digital</a>, operând brandul comercial „Miez Digital" prin site-ul miez.digital — denumit în continuare „<strong>Miez</strong>" sau „<strong>Prestator</strong>"</li>
+      <li><strong>Participant / Beneficiar</strong> — persoana fizică sau juridică ce se înscrie la atelier sau achiziționează un serviciu Miez — denumit în continuare „<strong>tu</strong>" sau „<strong>Participantul</strong>"</li>
+    </ul>
+    <p>Prin înscrierea la atelier (completarea formularului + acceptarea acestor Termeni + efectuarea plății), declari că ai citit, înțeles și accepți integral acești Termeni.</p>
+
+    <div class="callout">
+      <p><strong>Nota privind jurisdicția dublă:</strong> SOFT VIBE S.R.L. este o companie moldovenească, dar serviciul „Atelier Miez OpenClaw 101" este prestat fizic în România, iar majoritatea participanților sunt rezidenți UE. De aceea, contractul este guvernat simultan de legislația moldovenească (legea națională a Prestatorului) și de prevederile protective ale legislației române a consumatorului (acolo unde acestea oferă o protecție mai mare Participantului consumator). Detalii în secțiunea 14.</p>
+    </div>
+
+    <h2 id="obiect">2. Obiectul contractului</h2>
+    <p>Obiectul contractului este prestarea de către Miez a serviciului „<strong>Atelier Miez OpenClaw 101</strong>" (sau alt atelier similar specificat la înscriere), care constă în:</p>
+    <ul>
+      <li>Call de discovery pre-atelier (30 min)</li>
+      <li>Pregătirea unei mașini virtuale cu OpenClaw instalat și configurat</li>
+      <li>Participarea la o sesiune fizică de 8 ore (9:00–17:00) în București</li>
+      <li>Construcția în colaborare de agenți AI pentru afacerea Participantului</li>
+      <li>Bibliotecă de skills pre-configurate</li>
+      <li>30 zile de suport async post-atelier + acces la comunitatea privată</li>
+      <li>Ședință 1-on-1 de follow-up (60 min) la 30 zile post-atelier</li>
+    </ul>
+    <p>Lista exactă a livrabilelor pentru fiecare cohortă este comunicată pe pagina de prezentare a atelierului la momentul înscrierii.</p>
+
+    <h2 id="inscriere">3. Înscriere și confirmare</h2>
+
+    <h3>3.1 Procedura de înscriere</h3>
+    <ol>
+      <li>Completezi formularul de înscriere pe <a href="https://miez.digital">miez.digital</a></li>
+      <li>Primești email de confirmare a preluării înscrierii (în maxim 2 minute)</li>
+      <li>Miez te contactează telefonic în maxim 24 de ore pentru verificare și trimitere link plată</li>
+      <li>Efectuezi plata conform opțiunilor disponibile (vezi secțiunea 4)</li>
+      <li>După confirmarea plății, primești documente oficiale și instrucțiunile de pregătire</li>
+    </ol>
+
+    <h3>3.2 Rezervarea locului</h3>
+    <p>Locul tău în cohortă este <strong>rezervat definitiv doar după confirmarea plății</strong>. Înscrierea fără plată nu garantează locul — dacă între timp cohorta se umple, ești pus pe lista de așteptare sau propus pentru cohorta următoare.</p>
+
+    <h3>3.3 Dreptul Miez de a refuza înscrierea</h3>
+    <p>Miez își rezervă dreptul de a refuza înscrierea unui participant în cazul în care: profilul declarat nu se potrivește cu publicul țintă al atelierului; există suspiciuni rezonabile privind intenții frauduloase; participantul nu poate furniza datele fiscale necesare emiterii facturii. În astfel de situații, orice sumă plătită e returnată integral în maxim 10 zile lucrătoare.</p>
+
+    <h2 id="pret">4. Preț și plată</h2>
+
+    <h3>4.1 Preț</h3>
+    <p>Prețul atelierului este comunicat clar pe pagina de prezentare la momentul înscrierii. Pentru prima cohortă publică (29 aprilie 2026), prețul introductiv este <strong>1000 RON (TVA inclus, dacă e cazul)</strong>.</p>
+    <p>Prețurile pot varia pentru cohortele ulterioare. Prețul aplicabil este cel afișat la momentul înscrierii tale.</p>
+
+    <h3>4.2 Modalități de plată</h3>
+    <p>Plata se efectuează prin card bancar, securizat, prin procesatorul Stripe, conform termenilor acestora. Miez nu stochează datele tale bancare. Toate tranzacțiile cu cardul sunt procesate de Stripe, care este certificat PCI-DSS.</p>
+
+    <h3>4.3 Facturare</h3>
+    <p>Miez emite factură fiscală în maxim 5 zile lucrătoare de la confirmarea plății, conform legislației române în vigoare. Factura se trimite pe adresa de email furnizată la înscriere.</p>
+    <p>Pentru facturare către persoană juridică, furnizează la înscriere: denumirea completă, CUI, nr. Registrul Comerțului, adresa sediu. Facturile emise greșit din cauza datelor incorecte primite de la tine se corectează pe costul solicitantului.</p>
+
+    <h3>4.4 Transfer al locului</h3>
+    <p>Dacă nu poți participa la cohorta pentru care te-ai înscris, poți transfera locul la una din următoarele 2 cohorte anunțate, la <strong>prețul tău original</strong>, indiferent de prețul valabil la data cohortei viitoare. Transferul se solicită în scris la <a href="mailto:contact@miez.digital">contact@miez.digital</a> cu minim 48h înainte de cohorta inițială.</p>
+
+    <h2 id="livrare">5. Ce primești concret</h2>
+    <p>La finalul atelierului, Participantul primește:</p>
+    <ul>
+      <li>O mașină virtuală funcțională, cu OpenClaw instalat și configurat securizat</li>
+      <li>1–2 agenți AI custom, construiți împreună cu echipa Miez, care rulează pe VM-ul Participantului</li>
+      <li>Credențiale de acces la VM-ul respectiv (fără Miez să rețină acces după atelier, dacă Participantul solicită)</li>
+      <li>Bibliotecă de 5+ skills pre-configurate, curate de Miez</li>
+      <li>Documentație personalizată (text + comenzi)</li>
+      <li>Access la comunitatea privată Miez pentru 30 zile</li>
+      <li>Suport async pentru debugging în primele 30 zile</li>
+      <li>Un 1-on-1 de follow-up (60 min) la 30 zile post-atelier</li>
+    </ul>
+
+    <h2 id="garantie">6. Garanția meșterului</h2>
+    <div class="callout">
+      <p><strong>Dacă după prima oră de atelier simți că nu e pentru tine</strong> — că nu înțelegi, că nu se potrivește cu business-ul tău, că ai pierdut timpul — îți returnăm <strong>integral</strong> suma plătită, în maxim 10 zile lucrătoare, fără discuții, fără formulare, fără să te facem să justifici.</p>
+      <p>Singura condiție: comunicarea trebuie făcută în scris (email la <a href="mailto:contact@miez.digital">contact@miez.digital</a>) în cursul primei ore a atelierului sau în maxim 24 de ore după aceea.</p>
+    </div>
+    <p>După expirarea termenului de mai sus, dacă părăsești atelierul din motive personale sau dacă nu te prezinți, nu se mai aplică returnarea banilor. Îți rămâne însă dreptul de transfer la o cohortă viitoare (vezi 4.4).</p>
+
+    <h2 id="obligatii-p">7. Obligațiile Participantului</h2>
+    <p>Pentru ca atelierul să producă rezultatele așteptate, Participantul se obligă:</p>
+    <ul>
+      <li>Să furnizeze date corecte și reale la înscriere</li>
+      <li>Să aducă laptopul propriu, într-o stare de funcționare</li>
+      <li>Să creeze un cont Anthropic Claude API cu minim $10 credit înainte de atelier</li>
+      <li>Să pregătească credențialele de acces la SaaS-urile pe care le folosește</li>
+      <li>Să pună la dispoziția Miez informații minime despre afacere în call-ul de discovery</li>
+      <li>Să participe activ la atelier, fără întreruperi pentru reuniuni paralele</li>
+      <li>Să respecte regulile de conduită în spațiul atelierului (non-discriminare, respect reciproc)</li>
+      <li>Să nu înregistreze video/audio conținutul atelierului fără acordul scris al Miez și al celorlalți participanți</li>
+      <li>Să nu distribuie sau republice materialele Miez către terți (vezi secțiunea 9)</li>
+    </ul>
+
+    <h2 id="obligatii-m">8. Obligațiile Miez</h2>
+    <p>Miez se obligă:</p>
+    <ul>
+      <li>Să presteze serviciul la standardul descris pe pagina de prezentare</li>
+      <li>Să aloce pentru cohortă un număr de instructori și asistenți tehnici care să asigure un raport 1:4 sau mai bun participant–instructor la întrebări tehnice</li>
+      <li>Să respecte confidențialitatea datelor și informațiilor de business împărtășite de Participant (vezi <a href="/politica-confidentialitate">Politica de Confidențialitate</a> și NDA implicit între părți)</li>
+      <li>Să livreze toate bonusurile și materialele promise</li>
+      <li>Să răspundă la cererile de suport în fereastra celor 30 zile post-atelier, în timp rezonabil (uzual 24–48h)</li>
+    </ul>
+
+    <h2 id="ip">9. Proprietate intelectuală</h2>
+
+    <h3>9.1 Materialele Miez</h3>
+    <p>Toate materialele dezvoltate de Miez — metodologia, playbook-urile, documentația, schemele, frameworks, diagrammelor — rămân <strong>proprietatea exclusivă a Miez</strong>. Participantul obține <strong>o licență neexclusivă, non-transferabilă, fără drept de sublicențiere</strong> pentru uzul intern al propriei afaceri.</p>
+    <p>Este interzis: revânzarea, redistribuirea, folosirea pentru a preda cursuri terților, sau publicarea integrală/parțială a materialelor Miez fără acord scris prealabil.</p>
+
+    <h3>9.2 Codul și configurațiile construite pentru Participant</h3>
+    <p>Agenții, skills-urile și configurațiile construite <strong>specific pentru afacerea Participantului</strong> devin <strong>proprietatea Participantului</strong> la sfârșitul atelierului. Miez păstrează dreptul de a folosi tehnicile generice (non-specifice afacerii) în cohortele viitoare.</p>
+
+    <h3>9.3 OpenClaw și software terț</h3>
+    <p>OpenClaw este software open-source distribuit sub licență MIT. Claude API aparține Anthropic. Alte SaaS-uri și framework-uri folosite rămân sub licențele respectivilor furnizori. Miez nu deține drepturi asupra acestor produse și nu poate garanta continuitatea lor.</p>
+
+    <h2 id="raspundere">10. Limitarea răspunderii</h2>
+
+    <div class="callout warning">
+      <p><strong>Important — citește cu atenție.</strong> Pentru că atelierul construiește infrastructură AI cu acces la date reale, limitele răspunderii sunt concrete.</p>
+    </div>
+
+    <h3>10.1 Răspunderea Miez se limitează la</h3>
+    <p>Răspunderea Miez în legătură cu prestarea atelierului se limitează la:</p>
+    <ul>
+      <li>Prestarea efectivă a serviciului conform descrierii</li>
+      <li>Remedierea deficiențelor constatate în timpul atelierului</li>
+      <li>Returnarea sumei plătite, conform Garanției meșterului (secțiunea 6)</li>
+    </ul>
+    <p>Răspunderea totală maximă a Miez nu poate depăși suma plătită de Participant pentru serviciul respectiv, indiferent de natura cauzei (contractuală, delictuală, sau altă).</p>
+
+    <h3>10.2 Ce NU garantează Miez</h3>
+    <p>Miez NU garantează:</p>
+    <ul>
+      <li><strong>Rezultate de business specifice</strong> — creșterea vânzărilor, reducerea costurilor, sau alt outcome comercial depind de mulți factori pe care Miez nu îi controlează</li>
+      <li><strong>Funcționarea pe termen lung a agenților</strong> — agenții depind de API-uri terțe (Anthropic, SaaS-uri) care se pot modifica, întrerupe sau deveni contracost fără preaviz</li>
+      <li><strong>Lipsa totală de erori</strong> — niciun sistem complex nu e perfect; agenții AI pot produce rezultate inexacte sau inadecvate în cazuri particulare</li>
+      <li><strong>Compatibilitatea cu toate SaaS-urile</strong> — unele sisteme folosite de Participant pot avea limitări tehnice, de licență, sau de politică care împiedică integrarea</li>
+    </ul>
+
+    <h3>10.3 Responsabilitatea Participantului pentru operarea post-atelier</h3>
+    <p>După încheierea atelierului, <strong>Participantul este responsabil exclusiv</strong> pentru:</p>
+    <ul>
+      <li>Operarea mașinii virtuale și a agenților construiți</li>
+      <li>Securitatea continuă a sistemului (patch-uri, rotație credențiale, monitorizare)</li>
+      <li>Deciziile luate de agenți și acțiunile efectuate de aceștia</li>
+      <li>Respectarea reglementărilor aplicabile (GDPR pentru datele clienților săi, confidențialitate medicală, reglementări sectoriale)</li>
+      <li>Skills-urile adăugate ulterior, în special din surse terțe (community marketplace)</li>
+      <li>Modificările aduse configurației inițiale</li>
+    </ul>
+
+    <div class="callout warning">
+      <p><strong>Miez nu răspunde pentru pagube, pierderi de date, breșe de securitate, ori consecințe comerciale</strong> rezultate din: operarea agenților după atelier; skills instalate de Participant din alte surse decât biblioteca Miez; modificări ale configurației; prompt injection sau alte atacuri specifice agenților AI; downtime al furnizorilor terți (Anthropic, OpenClaw, cloud provider); utilizarea agenților în scopuri neconforme cu legea sau cu ToS-ul SaaS-urilor conectate.</p>
+    </div>
+
+    <h3>10.4 Risc specific: sisteme cu date sensibile</h3>
+    <p>Pentru Participanți care operează în domenii cu date sensibile (medical, juridic, financiar), Miez recomandă — dar nu impune — un audit de securitate independent înainte de expunerea agenților la datele reale ale clienților. Dacă Participantul alege să treacă direct în producție fără audit, această decizie este a sa și nu angajează răspunderea Miez.</p>
+
+    <h2 id="forta-majora">11. Forța majoră</h2>
+    <p>Niciuna dintre părți nu răspunde pentru neexecutarea obligațiilor dacă aceasta se datorează unui eveniment de forță majoră conform Codului Civil român — ex: calamități, război, pandemie, greve generalizate, întreruperi majore ale serviciilor terțe folosite.</p>
+    <p>În cazul în care forța majoră afectează desfășurarea unei cohorte, Miez va: reprograma cohorta la o dată rezonabilă SAU va returna integral sumele plătite, la alegerea Participantului.</p>
+
+    <h2 id="date">12. Protecția datelor personale</h2>
+    <p>Prelucrarea datelor personale este guvernată de <a href="/politica-confidentialitate">Politica de Confidențialitate</a>, care face parte integrantă din acești Termeni. Aceasta respectă atât <strong>Regulamentul (UE) 2016/679 (GDPR)</strong>, cât și <strong>Legea Republicii Moldova nr. 133/2011</strong> privind protecția datelor cu caracter personal. Prin acceptarea acestor Termeni, declari că ai citit și înțeles și Politica de Confidențialitate.</p>
+
+    <h2 id="modificari">13. Modificări ale Termenilor</h2>
+    <p>Miez poate actualiza acești Termeni pentru a reflecta schimbări legale, adăugarea de servicii, sau ajustări operaționale. Versiunea aplicabilă contractului tău este <strong>cea în vigoare la momentul înscrierii tale</strong>.</p>
+    <p>Modificările viitoare se aplică doar pentru înscrierile făcute după publicarea noii versiuni. Data ultimei actualizări este vizibilă în partea de sus a documentului.</p>
+
+    <h2 id="dispute">14. Soluționarea disputelor</h2>
+    <p>În cazul unei dispute, părțile încearcă întâi <strong>soluționarea amiabilă</strong>, prin notificare scrisă, în termen de 30 de zile.</p>
+
+    <h3>14.1 Jurisdicție și lege aplicabilă</h3>
+    <p>Contractul este guvernat de <strong>legislația Republicii Moldova</strong>, ca lege națională a Prestatorului. Dacă soluționarea amiabilă eșuează, competența materială și teritorială pentru soluționarea litigiilor aparține <strong>instanțelor judecătorești competente din municipiul Chișinău, Republica Moldova</strong>.</p>
+
+    <h3>14.2 Protecția consumatorului rezident UE</h3>
+    <p>Dacă ești consumator (persoană fizică) cu reședința obișnuită într-un stat membru UE, îți rămân aplicabile <strong>prevederile imperative ale legislației consumatorului</strong> din statul tău de reședință, acolo unde acestea îți acordă o protecție mai mare decât legea moldovenească. De asemenea, conform regulamentului UE privind jurisdicția în materie civilă, ai dreptul să inițiezi acțiunea fie în Moldova (la sediul Prestatorului), fie în statul tău de reședință.</p>
+
+    <p>Pentru litigii de consum în România, poți apela suplimentar la:</p>
+    <ul>
+      <li><strong>Autoritatea Națională pentru Protecția Consumatorului (ANPC)</strong> — <a href="https://anpc.ro" target="_blank" rel="noopener">anpc.ro</a></li>
+      <li><strong>Platforma SOL (Soluționare online a litigiilor)</strong> a Comisiei Europene — <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></li>
+    </ul>
+
+    <p>Pentru consumatori rezidenți în Republica Moldova, autoritatea competentă este <strong>Agenția pentru Protecția Consumatorilor și Supravegherea Pieței</strong> — <a href="https://consumator.gov.md" target="_blank" rel="noopener">consumator.gov.md</a>.</p>
+
+    <h2 id="final">15. Dispoziții finale</h2>
+    <p><strong>Nulitate parțială:</strong> Dacă o clauză din acești Termeni este declarată nulă sau inaplicabilă, celelalte clauze rămân valabile și aplicabile.</p>
+    <p><strong>Lipsa de renunțare:</strong> Faptul că Miez nu exercită un drept la un moment dat nu înseamnă renunțarea la acel drept.</p>
+    <p><strong>Notificări:</strong> Toate notificările între părți se fac în scris, pe email. Emailurile transmise la adresele oficiale ale părților se consideră primite în ziua transmiterii.</p>
+    <p><strong>Limba:</strong> Versiunea în limba română a acestor Termeni este cea oficială. Orice traduceri sunt puse la dispoziție pentru conveniență.</p>
+    <p><strong>Întregul acord:</strong> Acești Termeni, împreună cu Politica de Confidențialitate și Politica de Cookies, constituie întregul acord între părți cu privire la obiect.</p>
+
+    <p style="margin-top: 48px; font-size: 13px; color: var(--gri);">Document conform Codului Civil Român, Codului Fiscal, OUG nr. 34/2014 privind drepturile consumatorilor, OG nr. 21/1992 privind protecția consumatorilor și Regulamentul (UE) 2016/679 (GDPR).</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container-wide">
+    <div class="footer-inner">
+      <p>Miez Digital · <a href="https://miez.digital">miez.digital</a> · operat de SOFT VIBE S.R.L., Parcul IT Moldova</p>
+      <div class="footer-legal">
+        <a href="/politica-confidentialitate">Politica de Confidențialitate</a>
+        <a href="/termeni-si-conditii">Termeni și Condiții</a>
+        <a href="/politica-cookies">Politica Cookies</a>
+        <a href="mailto:contact@miez.digital">contact@miez.digital</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 12px;">Copyright © 2026 Miez Digital. Infrastructură AI construită, nu închiriată.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politica de Cookies · Miez Digital</title>
+<meta name="description" content="Ce cookies folosim, de ce, și cum poți controla preferințele tale.">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --chihlimbar: #D4A574;
+  --chihlimbar-dark: #B88855;
+  --crem: #F5F0E6;
+  --crem-soft: #EDE5D4;
+  --negru: #1A1A1A;
+  --negru-soft: #2E2823;
+  --caramida: #B33A3A;
+  --gri: #8B8178;
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--crem);
+  color: var(--negru);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+.nav { padding: 20px 0; border-bottom: 1px solid rgba(26,26,26,0.08); background: rgba(245, 240, 230, 0.95); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--negru); }
+.logo-chip { width: 48px; height: 48px; background: var(--negru); border-radius: 6px; display: flex; align-items: center; justify-content: center; padding: 6px; box-shadow: 0 2px 12px rgba(26,26,26,0.18); }
+.logo-mark { width: 100%; height: 100%; }
+.logo-text { font-weight: 700; font-size: 20px; letter-spacing: 0.22em; color: var(--negru); line-height: 1; }
+.nav-cta { background: var(--negru); color: var(--crem); padding: 9px 18px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease; }
+.nav-cta:hover { background: var(--caramida); }
+
+.page-header { padding: 80px 0 60px; border-bottom: 1px solid rgba(26,26,26,0.1); }
+.breadcrumb { font-size: 13px; color: var(--gri); margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+.breadcrumb a { color: var(--caramida); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  color: var(--negru);
+}
+.meta-line { font-size: 14px; color: var(--gri); }
+.meta-line strong { color: var(--negru); font-weight: 600; }
+
+.content { padding: 60px 0 100px; }
+.content h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--negru);
+  margin: 56px 0 20px;
+  line-height: 1.25;
+}
+.content h2:first-of-type { margin-top: 0; }
+.content h3 {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--negru);
+  margin: 28px 0 12px;
+}
+.content p { margin-bottom: 18px; color: var(--negru-soft); }
+.content ul { margin: 12px 0 24px 24px; color: var(--negru-soft); }
+.content li { margin-bottom: 10px; padding-left: 6px; }
+.content a { color: var(--caramida); text-decoration: underline; text-underline-offset: 2px; }
+.content a:hover { text-decoration-thickness: 2px; }
+.content strong { color: var(--negru); }
+
+.callout {
+  background: var(--crem-soft);
+  border-left: 3px solid var(--chihlimbar);
+  padding: 24px 28px;
+  margin: 28px 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+
+.cookie-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 28px;
+  font-size: 14px;
+  background: var(--crem-soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cookie-table th, .cookie-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(26,26,26,0.08);
+  vertical-align: top;
+}
+.cookie-table th {
+  background: var(--negru);
+  color: var(--chihlimbar);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.cookie-table td { color: var(--negru-soft); }
+.cookie-table tr:last-child td { border-bottom: none; }
+.cookie-table code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 13px; background: rgba(26,26,26,0.06); padding: 2px 6px; border-radius: 3px; color: var(--negru); }
+
+.category-card {
+  background: var(--crem-soft);
+  padding: 28px 32px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  border-left: 3px solid var(--chihlimbar);
+}
+.category-card h3 { margin-top: 0; font-family: var(--font-display); font-style: italic; font-size: 22px; font-weight: 500; color: var(--negru); }
+.category-card .badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.badge.required { background: var(--negru); color: var(--chihlimbar); }
+.badge.optional { background: var(--chihlimbar); color: var(--negru); }
+
+.reset-btn {
+  display: inline-block;
+  background: var(--negru);
+  color: var(--crem);
+  padding: 14px 24px;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+.reset-btn:hover { background: var(--caramida); }
+
+footer { background: var(--negru); color: rgba(245, 240, 230, 0.6); padding: 48px 0; }
+footer .footer-inner { text-align: center; }
+footer p { color: rgba(245, 240, 230, 0.6); font-size: 14px; margin-bottom: 8px; }
+footer a { color: var(--chihlimbar); text-decoration: none; }
+footer a:hover { color: var(--crem); }
+.footer-legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-top: 16px; font-size: 13px; }
+.footer-legal a { color: rgba(245, 240, 230, 0.7); border-bottom: 1px dotted rgba(212, 165, 116, 0.4); padding-bottom: 1px; }
+
+@media (max-width: 640px) {
+  .page-header { padding: 50px 0 40px; }
+  .content { padding: 40px 0 60px; }
+  .content h2 { font-size: 24px; margin-top: 40px; }
+  .cookie-table { font-size: 13px; }
+  .cookie-table th, .cookie-table td { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container-wide">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <div class="logo-chip">
+          <svg class="logo-mark" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"
+               fill="none" stroke="#D4A574" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="28" y1="28" x2="28" y2="172"/><line x1="212" y1="28" x2="212" y2="172"/>
+            <line x1="74" y1="46" x2="74" y2="172"/><line x1="166" y1="46" x2="166" y2="172"/>
+            <line x1="28" y1="28" x2="74" y2="46"/><line x1="212" y1="28" x2="166" y2="46"/>
+            <line x1="74" y1="46" x2="120" y2="132"/><line x1="166" y1="46" x2="120" y2="132"/>
+            <line x1="28" y1="172" x2="74" y2="172"/><line x1="166" y1="172" x2="212" y2="172"/>
+            <line x1="28" y1="28" x2="120" y2="132"/><line x1="212" y1="28" x2="120" y2="132"/>
+            <line x1="28" y1="172" x2="120" y2="132"/><line x1="212" y1="172" x2="120" y2="132"/>
+            <line x1="28" y1="28" x2="74" y2="172"/><line x1="212" y1="28" x2="166" y2="172"/>
+            <line x1="74" y1="46" x2="28" y2="172"/><line x1="166" y1="46" x2="212" y2="172"/>
+            <line x1="28" y1="72" x2="74" y2="72"/><line x1="166" y1="72" x2="212" y2="72"/>
+            <line x1="28" y1="116" x2="74" y2="116"/><line x1="166" y1="116" x2="212" y2="116"/>
+            <circle cx="120" cy="132" r="12" fill="#D4A574" stroke="none"/>
+          </svg>
+        </div>
+        <span class="logo-text">MIEZ</span>
+      </a>
+      <a href="/#inscriere" class="nav-cta">Rezervă locul</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Acasă</a> → Politica de Cookies</div>
+    <h1>Politica de Cookies</h1>
+    <p class="meta-line">Ultima actualizare: <strong>20 aprilie 2026</strong> · Versiunea 1.0</p>
+  </div>
+</header>
+
+<main class="content">
+  <div class="container">
+
+    <div class="callout">
+      <p>Pe scurt: folosim doar două tipuri de cookies — unele esențiale (să-ți rețină preferințele de cookies) și unele de marketing (Meta Pixel, doar dacă le accepți explicit). Nimic altceva. Le poți controla oricând.</p>
+    </div>
+
+    <h2>1. Ce sunt cookies</h2>
+    <p>Cookies sunt fișiere text mici pe care site-urile le stochează pe dispozitivul tău (browserul, telefonul) când le vizitezi. Sunt folosite pentru a-ți reține preferințele (ex: dacă ai acceptat sau nu cookie-uri), pentru analiză de uz, sau pentru marketing.</p>
+    <p>Pe lângă cookies clasice, site-ul nostru folosește și <strong>localStorage</strong> — un mecanism similar, care stochează date mici în browserul tău (tot sub controlul tău).</p>
+
+    <h2>2. Ce cookies folosim concret</h2>
+    <p>Site-ul miez.digital folosește minimul strict necesar. Le împărțim în două categorii clare:</p>
+
+    <div class="category-card">
+      <h3>Cookies esențiale <span class="badge required">Obligatorii</span></h3>
+      <p>Aceste cookies sunt strict necesare pentru funcționarea site-ului. Fără ele, unele funcții (ex: banner-ul de consimțământ, formularele) nu pot opera. Nu necesită consimțământ explicit, conform GDPR art. 6 alin. 1 lit. f (interes legitim) și Directivei ePrivacy.</p>
+
+      <table class="cookie-table">
+        <thead>
+          <tr><th>Nume</th><th>Tip</th><th>Scop</th><th>Durată</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>miezCookieConsent</code></td>
+            <td>localStorage</td>
+            <td>Reține dacă ai acceptat sau refuzat cookie-urile non-esențiale, ca să nu-ți mai apară banner-ul la fiecare vizită.</td>
+            <td>Permanent (până ștergi datele browserului)</td>
+          </tr>
+          <tr>
+            <td><code>Session cookies</code> Netlify</td>
+            <td>HTTP Cookie</td>
+            <td>Gestionare sesiune tehnică, prevenire abuzuri la trimiterea formularelor.</td>
+            <td>Sesiune (șterse la închiderea browserului)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="category-card">
+      <h3>Cookies de marketing <span class="badge optional">Opționale · Necesită consimțământ</span></h3>
+      <p>Aceste cookies ne ajută să înțelegem ce campanii publicitare funcționează. Se încarcă <strong>doar dacă ai apăsat „Accept toate"</strong> în banner-ul de cookies. Dacă ai refuzat sau nu ai răspuns încă, ele NU sunt active.</p>
+
+      <table class="cookie-table">
+        <thead>
+          <tr><th>Nume</th><th>Furnizor</th><th>Scop</th><th>Durată</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>_fbp</code></td>
+            <td>Meta Platforms (Facebook)</td>
+            <td>Identificator de browser pentru măsurarea eficacității campaniilor Meta Ads și atribuirea conversiilor.</td>
+            <td>3 luni</td>
+          </tr>
+          <tr>
+            <td><code>_fbc</code></td>
+            <td>Meta Platforms (Facebook)</td>
+            <td>Identificator de click pentru atribuirea conversiilor la un click specific pe o reclamă Meta.</td>
+            <td>7 zile</td>
+          </tr>
+          <tr>
+            <td><code>fr</code>, <code>datr</code></td>
+            <td>Meta Platforms (Facebook)</td>
+            <td>Setate de Facebook pentru autentificare, securitate și livrarea de reclame adaptate.</td>
+            <td>variabil (până la 2 ani)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top: 16px; font-size: 14px;">Datele colectate prin Meta Pixel sunt transmise către Meta Platforms Ireland Ltd. și, ulterior, către Meta Platforms Inc. (SUA), conform Standard Contractual Clauses și Data Privacy Framework UE–SUA. Detalii complete în <a href="/politica-confidentialitate">Politica de Confidențialitate</a>.</p>
+    </div>
+
+    <h2>3. Cum funcționează banner-ul de consimțământ</h2>
+    <p>Când vizitezi prima dată site-ul, îți apare un banner în partea de jos cu două opțiuni:</p>
+    <ul>
+      <li><strong>„Accept toate"</strong> — activează și cookie-urile de marketing (Meta Pixel)</li>
+      <li><strong>„Doar cele esențiale"</strong> — păstrează doar cookie-urile necesare pentru funcționarea de bază</li>
+    </ul>
+    <p>Alegerea ta e salvată local în browser prin <code>localStorage</code> sub cheia <code>miezCookieConsent</code>. Nu te mai întrebăm la vizitele următoare, decât dacă:</p>
+    <ul>
+      <li>Ștergi datele browserului</li>
+      <li>Vizitezi site-ul de pe un alt dispozitiv sau browser</li>
+      <li>Actualizăm politica de cookies cu modificări semnificative</li>
+    </ul>
+
+    <h2 id="retragere">4. Cum îți retragi consimțământul sau modifici preferințele</h2>
+    <p>Poți schimba preferințele tale de cookies oricând, în trei moduri:</p>
+
+    <h3>A. Prin butonul de resetare preferințe (cel mai simplu)</h3>
+    <p>Apasă butonul de mai jos pentru a șterge preferința curentă. La următoarea reîncărcare a paginii, banner-ul reapare și poți face o alegere nouă.</p>
+    <button type="button" class="reset-btn" id="resetConsent">Resetează preferințele de cookies</button>
+    <p id="resetConfirm" style="display:none; color: var(--caramida); font-weight: 600; margin-top: 12px;">✓ Preferința a fost resetată. Reîncarcă pagina pentru a vedea banner-ul.</p>
+
+    <h3>B. Din setările browserului</h3>
+    <p>Majoritatea browserelor îți permit să gestionezi cookies individual:</p>
+    <ul>
+      <li><strong>Chrome:</strong> Setări → Confidențialitate și securitate → Cookies și alte date ale site-urilor</li>
+      <li><strong>Firefox:</strong> Setări → Confidențialitate și securitate → Cookies și date ale site-ului</li>
+      <li><strong>Safari:</strong> Preferințe → Confidențialitate → Gestionare date site-uri</li>
+      <li><strong>Edge:</strong> Setări → Cookies și permisiuni site-uri</li>
+    </ul>
+
+    <h3>C. Prin instrumente sectoriale</h3>
+    <p>Pentru cookie-uri de reclame de la Meta și alți furnizori majori, poți folosi:</p>
+    <ul>
+      <li><a href="https://www.facebook.com/help/568137493302217" target="_blank" rel="noopener">Setări publicitate Facebook / Meta</a></li>
+      <li><a href="https://www.youronlinechoices.com/ro/" target="_blank" rel="noopener">Your Online Choices (IAB Europe)</a> — opt-out pentru multiple rețele publicitare</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Important:</strong> blocarea tuturor cookie-urilor (inclusiv a celor esențiale) poate face ca unele funcții ale site-ului — banner-ul de consimțământ, trimiterea formularelor — să nu funcționeze corect. Recomandăm să blochezi doar cookie-urile non-esențiale dacă dorești asta.</p>
+    </div>
+
+    <h2>5. Cookie-uri de la terți (embed-uri)</h2>
+    <p>Dacă încorporăm conținut de pe platforme terțe (ex: video YouTube, hartă Google Maps, widget LinkedIn), acele platforme pot seta propriile cookie-uri, guvernate de politicile lor. La momentul publicării acestei politici, site-ul miez.digital <strong>nu încorporează conținut terț</strong> care să seteze cookie-uri suplimentare față de cele listate mai sus.</p>
+    <p>Dacă adăugăm astfel de elemente în viitor, actualizăm această politică și te anunțăm prin banner de cookies pentru consimțământ nou.</p>
+
+    <h2>6. Modificări ale politicii de cookies</h2>
+    <p>Această politică poate fi actualizată când adăugăm sau eliminăm cookie-uri, când apar modificări legale, sau când schimbăm furnizori terți. Pentru modificări semnificative — ex: adăugarea unei categorii noi de cookies — banner-ul de consimțământ reapare pentru a-ți cere un consimțământ nou.</p>
+    <p>Data ultimei actualizări este vizibilă în partea de sus a documentului.</p>
+
+    <h2>7. Contact</h2>
+    <p>Pentru orice întrebare despre cookies sau despre modul în care tratăm datele tale, scrie-ne la <a href="mailto:contact@miez.digital">contact@miez.digital</a>. Operatorul Miez Digital este <strong>SOFT VIBE S.R.L.</strong> (Republica Moldova, rezident al Parcului IT Moldova), cu sediul în or. Drochia, str. Mitropolit Varlaam nr. 115. Te invităm să citești și <a href="/politica-confidentialitate">Politica de Confidențialitate</a> pentru contextul complet al prelucrării datelor.</p>
+
+    <p style="margin-top: 48px; font-size: 13px; color: var(--gri);">Document conform Directivei 2002/58/CE (ePrivacy), Regulamentului (UE) 2016/679 (GDPR), Legii nr. 506/2004 a României privind prelucrarea datelor cu caracter personal în sectorul comunicațiilor electronice, și Legii Republicii Moldova nr. 133/2011 privind protecția datelor cu caracter personal.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container-wide">
+    <div class="footer-inner">
+      <p>Miez Digital · <a href="https://miez.digital">miez.digital</a> · operat de SOFT VIBE S.R.L., Parcul IT Moldova</p>
+      <div class="footer-legal">
+        <a href="/politica-confidentialitate">Politica de Confidențialitate</a>
+        <a href="/termeni-si-conditii">Termeni și Condiții</a>
+        <a href="/politica-cookies">Politica Cookies</a>
+        <a href="mailto:contact@miez.digital">contact@miez.digital</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 12px;">Copyright © 2026 Miez Digital. Infrastructură AI construită, nu închiriată.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('resetConsent').addEventListener('click', function() {
+  try {
+    localStorage.removeItem('miezCookieConsent');
+    document.getElementById('resetConfirm').style.display = 'block';
+  } catch(e) {
+    alert('Nu am putut reseta preferința. Șterge manual datele browserului pentru miez.digital.');
+  }
+});
+</script>
+
+</body>
+</html>

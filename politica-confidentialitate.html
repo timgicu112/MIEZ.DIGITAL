@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politica de Confidențialitate · Miez Digital</title>
+<meta name="description" content="Cum colectăm, folosim și protejăm datele personale conform GDPR.">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --chihlimbar: #D4A574;
+  --chihlimbar-dark: #B88855;
+  --crem: #F5F0E6;
+  --crem-soft: #EDE5D4;
+  --negru: #1A1A1A;
+  --negru-soft: #2E2823;
+  --caramida: #B33A3A;
+  --gri: #8B8178;
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--crem);
+  color: var(--negru);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+.nav { padding: 20px 0; border-bottom: 1px solid rgba(26,26,26,0.08); background: rgba(245, 240, 230, 0.95); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--negru); }
+.logo-chip { width: 48px; height: 48px; background: var(--negru); border-radius: 6px; display: flex; align-items: center; justify-content: center; padding: 6px; box-shadow: 0 2px 12px rgba(26,26,26,0.18); }
+.logo-mark { width: 100%; height: 100%; }
+.logo-text { font-weight: 700; font-size: 20px; letter-spacing: 0.22em; color: var(--negru); line-height: 1; }
+.nav-cta { background: var(--negru); color: var(--crem); padding: 9px 18px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease; }
+.nav-cta:hover { background: var(--caramida); }
+
+/* HEADER */
+.page-header { padding: 80px 0 60px; border-bottom: 1px solid rgba(26,26,26,0.1); }
+.breadcrumb { font-size: 13px; color: var(--gri); margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+.breadcrumb a { color: var(--caramida); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  color: var(--negru);
+}
+.meta-line { font-size: 14px; color: var(--gri); }
+.meta-line strong { color: var(--negru); font-weight: 600; }
+
+/* CONTENT */
+.content { padding: 60px 0 100px; }
+.content h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--negru);
+  margin: 56px 0 20px;
+  line-height: 1.25;
+}
+.content h2:first-of-type { margin-top: 0; }
+.content h3 {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--negru);
+  margin: 28px 0 12px;
+}
+.content p { margin-bottom: 18px; color: var(--negru-soft); }
+.content ul, .content ol { margin: 12px 0 24px 24px; color: var(--negru-soft); }
+.content li { margin-bottom: 10px; padding-left: 6px; }
+.content a { color: var(--caramida); text-decoration: underline; text-underline-offset: 2px; }
+.content a:hover { color: var(--caramida); text-decoration-thickness: 2px; }
+.content strong { color: var(--negru); }
+
+.callout {
+  background: var(--crem-soft);
+  border-left: 3px solid var(--chihlimbar);
+  padding: 24px 28px;
+  margin: 28px 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 28px;
+  font-size: 14px;
+  background: var(--crem-soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.data-table th, .data-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(26,26,26,0.08);
+  vertical-align: top;
+}
+.data-table th {
+  background: var(--negru);
+  color: var(--chihlimbar);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.data-table td { color: var(--negru-soft); }
+.data-table tr:last-child td { border-bottom: none; }
+
+/* TOC */
+.toc {
+  background: var(--crem-soft);
+  padding: 28px 32px;
+  border-radius: 4px;
+  margin-bottom: 56px;
+  border-top: 3px solid var(--chihlimbar);
+}
+.toc-title { font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--caramida); margin-bottom: 16px; }
+.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; font-size: 14px; }
+.toc li { margin-bottom: 6px; color: var(--negru-soft); padding-left: 4px; }
+.toc a { color: var(--negru); text-decoration: none; }
+.toc a:hover { color: var(--caramida); text-decoration: underline; }
+@media (max-width: 640px) { .toc ol { columns: 1; } }
+
+/* FOOTER */
+footer { background: var(--negru); color: rgba(245, 240, 230, 0.6); padding: 48px 0; }
+footer .footer-inner { text-align: center; }
+footer p { color: rgba(245, 240, 230, 0.6); font-size: 14px; margin-bottom: 8px; }
+footer a { color: var(--chihlimbar); text-decoration: none; }
+footer a:hover { color: var(--crem); }
+.footer-legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-top: 16px; font-size: 13px; }
+.footer-legal a { color: rgba(245, 240, 230, 0.7); border-bottom: 1px dotted rgba(212, 165, 116, 0.4); padding-bottom: 1px; }
+
+@media (max-width: 640px) {
+  .page-header { padding: 50px 0 40px; }
+  .content { padding: 40px 0 60px; }
+  .content h2 { font-size: 24px; margin-top: 40px; }
+  .toc { padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container-wide">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <div class="logo-chip">
+          <svg class="logo-mark" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"
+               fill="none" stroke="#D4A574" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="28" y1="28" x2="28" y2="172"/><line x1="212" y1="28" x2="212" y2="172"/>
+            <line x1="74" y1="46" x2="74" y2="172"/><line x1="166" y1="46" x2="166" y2="172"/>
+            <line x1="28" y1="28" x2="74" y2="46"/><line x1="212" y1="28" x2="166" y2="46"/>
+            <line x1="74" y1="46" x2="120" y2="132"/><line x1="166" y1="46" x2="120" y2="132"/>
+            <line x1="28" y1="172" x2="74" y2="172"/><line x1="166" y1="172" x2="212" y2="172"/>
+            <line x1="28" y1="28" x2="120" y2="132"/><line x1="212" y1="28" x2="120" y2="132"/>
+            <line x1="28" y1="172" x2="120" y2="132"/><line x1="212" y1="172" x2="120" y2="132"/>
+            <line x1="28" y1="28" x2="74" y2="172"/><line x1="212" y1="28" x2="166" y2="172"/>
+            <line x1="74" y1="46" x2="28" y2="172"/><line x1="166" y1="46" x2="212" y2="172"/>
+            <line x1="28" y1="72" x2="74" y2="72"/><line x1="166" y1="72" x2="212" y2="72"/>
+            <line x1="28" y1="116" x2="74" y2="116"/><line x1="166" y1="116" x2="212" y2="116"/>
+            <circle cx="120" cy="132" r="12" fill="#D4A574" stroke="none"/>
+          </svg>
+        </div>
+        <span class="logo-text">MIEZ</span>
+      </a>
+      <a href="/#inscriere" class="nav-cta">Rezervă locul</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Acasă</a> → Politica de Confidențialitate</div>
+    <h1>Politica de Confidențialitate</h1>
+    <p class="meta-line">Ultima actualizare: <strong>20 aprilie 2026</strong> · Versiunea 1.0</p>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main class="content">
+  <div class="container">
+
+    <div class="callout">
+      <p>Pe scurt: colectăm doar datele strict necesare pentru a organiza atelierul și a-ți trimite informații despre el. Nu vindem și nu închiriem datele nimănui. Poți cere ștergerea lor în orice moment. Restul documentului detaliază exact ce se întâmplă cu datele tale.</p>
+    </div>
+
+    <nav class="toc" aria-label="Cuprins">
+      <div class="toc-title">Cuprins</div>
+      <ol>
+        <li><a href="#operator">Cine este operatorul</a></li>
+        <li><a href="#date">Ce date colectăm</a></li>
+        <li><a href="#scop">Scopul prelucrării</a></li>
+        <li><a href="#baza">Baza legală</a></li>
+        <li><a href="#destinatari">Destinatari și procesatori</a></li>
+        <li><a href="#transfer">Transferuri internaționale</a></li>
+        <li><a href="#stocare">Cât timp păstrăm datele</a></li>
+        <li><a href="#drepturi">Drepturile tale (GDPR)</a></li>
+        <li><a href="#securitate">Securitatea datelor</a></li>
+        <li><a href="#cookies">Cookies și tracking</a></li>
+        <li><a href="#minori">Minori</a></li>
+        <li><a href="#modificari">Modificări ale politicii</a></li>
+        <li><a href="#contact">Contact și autoritate</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="operator">1. Cine este operatorul</h2>
+    <p>Operatorul de date personale pentru site-ul <strong>miez.digital</strong> și pentru serviciile Miez Digital este:</p>
+    <ul>
+      <li><strong>Denumire:</strong> Societatea cu Răspundere Limitată SOFT VIBE (SOFT VIBE S.R.L.)</li>
+      <li><strong>IDNO (cod fiscal):</strong> 1025607002647</li>
+      <li><strong>Data înregistrării:</strong> 16 iunie 2025</li>
+      <li><strong>Formă juridică:</strong> Societate cu Răspundere Limitată, rezident al <strong>Parcului IT Moldova</strong> (regim fiscal special, Legea nr. 77/2016 privind parcurile pentru tehnologia informației)</li>
+      <li><strong>Sediu social:</strong> Republica Moldova, or. Drochia, str. Mitropolit Varlaam, 115</li>
+      <li><strong>Email oficial:</strong> <a href="mailto:contact@miez.digital">contact@miez.digital</a></li>
+      <li><strong>Email pentru cereri privind datele personale:</strong> <a href="mailto:gdpr@miez.digital">gdpr@miez.digital</a></li>
+    </ul>
+    <p>În continuare, în acest document, ne vom referi la operator drept „Miez", „noi" sau „Miez Digital". La tine, vizitatorul site-ului sau participantul la atelier, ne vom referi drept „tu" sau „utilizator".</p>
+
+    <div class="callout">
+      <p><strong>Nota privind jurisdicția:</strong> SOFT VIBE S.R.L. este o entitate moldovenească, dar serviciile Miez Digital sunt oferite activ în Uniunea Europeană (în special România). Prin urmare, prelucrarea datelor tale este guvernată simultan de <strong>Regulamentul (UE) 2016/679 (GDPR)</strong> și de <strong>Legea nr. 133/2011 a Republicii Moldova</strong> privind protecția datelor cu caracter personal. Dacă ești rezident UE, îți sunt aplicabile toate drepturile GDPR, iar autoritățile competente sunt detaliate în secțiunea 13.</p>
+    </div>
+
+    <h2 id="date">2. Ce date colectăm</h2>
+    <p>Colectăm doar datele strict necesare pentru a-ți oferi serviciul solicitat. Nu colectăm date „pentru orice eventualitate".</p>
+
+    <h3>2.1 Date pe care le furnizezi direct</h3>
+    <p>Când te înscrii la un atelier prin formularul de pe site, ne dai:</p>
+    <ul>
+      <li>Nume și prenume</li>
+      <li>Adresă de email</li>
+      <li>Număr de telefon</li>
+      <li>Numele afacerii tale</li>
+      <li>Industria în care activezi</li>
+    </ul>
+    <p>Când plătești atelierul, procesatorul de plăți colectează datele tale bancare — Miez <strong>nu vede și nu stochează</strong> aceste date. Vezi secțiunea „Destinatari" pentru detalii.</p>
+
+    <h3>2.2 Date colectate automat</h3>
+    <p>Când vizitezi site-ul, browserul tău trimite automat:</p>
+    <ul>
+      <li>Adresa IP</li>
+      <li>Tipul și versiunea de browser</li>
+      <li>Sistemul de operare</li>
+      <li>Paginile vizitate și timpul petrecut</li>
+      <li>Referrerul (de unde ai venit)</li>
+    </ul>
+    <p>Aceste date sunt folosite pentru analiză agregată — nu identificăm persoane individuale pe baza lor, decât în caz de investigație de securitate.</p>
+
+    <h2 id="scop">3. Scopul prelucrării</h2>
+    <p>Folosim datele tale exclusiv pentru următoarele scopuri:</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Scop</th><th>Date folosite</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Organizarea atelierului și comunicare cu tine</td>
+          <td>Nume, email, telefon, firmă</td>
+        </tr>
+        <tr>
+          <td>Emitere factură și procesare plată</td>
+          <td>Nume, firmă, CUI dacă e SRL, date bancare (procesate de terț)</td>
+        </tr>
+        <tr>
+          <td>Personalizare ghid pregătire pre-atelier</td>
+          <td>Industrie, dimensiune afacere</td>
+        </tr>
+        <tr>
+          <td>Analiză site și optimizare (agregat)</td>
+          <td>IP, browser, pagini vizitate</td>
+        </tr>
+        <tr>
+          <td>Măsurare campanii Meta (doar cu consimțământ)</td>
+          <td>Cookie-uri Meta Pixel</td>
+        </tr>
+        <tr>
+          <td>Trimitere newsletter (doar cu consimțământ)</td>
+          <td>Email</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Nu folosim datele tale pentru alte scopuri (ex: profilare publicitară extinsă, vânzare către terți, marketing pentru servicii nelegate de Miez).</p>
+
+    <h2 id="baza">4. Baza legală</h2>
+    <p>Fiecare tip de prelucrare are o bază legală concretă conform Regulamentului UE 2016/679 (GDPR):</p>
+    <ul>
+      <li><strong>Consimțământ</strong> (art. 6 alin. 1 lit. a) — pentru înscrierea la atelier, trimiterea de newsletter, și activarea cookie-urilor de marketing</li>
+      <li><strong>Executarea contractului</strong> (art. 6 alin. 1 lit. b) — pentru prestarea efectivă a serviciilor contractate (atelierul, suportul post-atelier)</li>
+      <li><strong>Obligație legală</strong> (art. 6 alin. 1 lit. c) — pentru emiterea de facturi și păstrarea evidenței contabile conform legislației românești</li>
+      <li><strong>Interes legitim</strong> (art. 6 alin. 1 lit. f) — pentru securitatea site-ului, prevenirea fraudelor, și analize agregate non-identificatoare</li>
+    </ul>
+
+    <h2 id="destinatari">5. Destinatari și procesatori</h2>
+    <p>Pentru a funcționa, ne bazăm pe câțiva furnizori terți care pot procesa date personale în numele nostru. Toți sunt obligați contractual să respecte standardele GDPR.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Furnizor</th><th>Rol</th><th>Date procesate</th><th>Locație</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Netlify</strong></td>
+          <td>Hosting site + gestionare formulare</td>
+          <td>Toate datele din formular</td>
+          <td>SUA (cu Standard Contractual Clauses)</td>
+        </tr>
+        <tr>
+          <td><strong>Meta Platforms</strong> (Facebook)</td>
+          <td>Meta Pixel — măsurare eficiență campanii</td>
+          <td>Cookie-uri, acțiuni pe site</td>
+          <td>SUA (doar cu consimțământul tău)</td>
+        </tr>
+        <tr>
+          <td><strong>Stripe</strong></td>
+          <td>Procesare plăți</td>
+          <td>Date bancare (direct la ei, nu trec prin Miez)</td>
+          <td>UE</td>
+        </tr>
+        <tr>
+          <td><strong>Furnizor de email</strong></td>
+          <td>Trimitere email-uri tranzacționale și newsletter</td>
+          <td>Email, nume</td>
+          <td>UE</td>
+        </tr>
+        <tr>
+          <td><strong>Contabil / cabinet contabil</strong></td>
+          <td>Evidență contabilă legală</td>
+          <td>Date fiscale (nume, firmă, CUI)</td>
+          <td>România</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Nu vindem, nu închiriem și nu partajăm datele tale cu terți în scopuri de marketing neautorizate.</p>
+
+    <h2 id="transfer">6. Transferuri internaționale</h2>
+    <p>Unele servicii (Netlify, Meta) sunt operate de companii cu sediu în SUA. Pentru transferul datelor către SUA folosim:</p>
+    <ul>
+      <li><strong>Standard Contractual Clauses (SCC)</strong> aprobate de Comisia Europeană</li>
+      <li><strong>Data Privacy Framework UE–SUA</strong>, acolo unde furnizorul este certificat</li>
+    </ul>
+    <p>Pentru transferurile către Meta (Pixel), acestea se întâmplă <strong>doar dacă tu ai acceptat cookie-urile de marketing</strong> prin banner-ul de consimțământ.</p>
+
+    <h2 id="stocare">7. Cât timp păstrăm datele</h2>
+    <p>Păstrăm datele doar atât timp cât avem nevoie de ele pentru scopul declarat:</p>
+    <ul>
+      <li><strong>Date de înscriere la atelier:</strong> 3 ani de la ultima interacțiune, pentru follow-up și analiza cohortelor</li>
+      <li><strong>Date de facturare:</strong> 10 ani, conform Codului Fiscal al României</li>
+      <li><strong>Cookie-uri non-esențiale:</strong> maxim 13 luni sau până îți retragi consimțământul</li>
+      <li><strong>Log-uri server (adrese IP):</strong> 30 zile, apoi anonimizate</li>
+      <li><strong>Email-uri de comunicare directă:</strong> 3 ani sau până ceri ștergerea</li>
+    </ul>
+    <p>După expirarea termenului, datele sunt șterse în mod securizat sau anonimizate ireversibil.</p>
+
+    <h2 id="drepturi">8. Drepturile tale conform GDPR</h2>
+    <p>Indiferent că ești client al Miez sau doar vizitator al site-ului, ai următoarele drepturi:</p>
+    <ul>
+      <li><strong>Acces</strong> — poți cere o copie a datelor personale pe care le avem despre tine</li>
+      <li><strong>Rectificare</strong> — poți cere corectarea datelor incorecte sau incomplete</li>
+      <li><strong>Ștergere</strong> („dreptul de a fi uitat") — poți cere ștergerea datelor, cu excepția celor pe care trebuie să le păstrăm prin lege (facturi)</li>
+      <li><strong>Restricționarea prelucrării</strong> — poți cere să nu-ți mai prelucrăm datele în anumite scopuri</li>
+      <li><strong>Portabilitate</strong> — poți primi datele tale într-un format structurat, pentru a le transfera la alt furnizor</li>
+      <li><strong>Opoziție</strong> — te poți opune prelucrării bazate pe interes legitim sau pentru marketing direct</li>
+      <li><strong>Retragere consimțământ</strong> — poți retrage consimțământul în orice moment, fără să afectezi legalitatea prelucrării anterioare</li>
+      <li><strong>Neluarea unei decizii bazate exclusiv pe prelucrare automată</strong> — nu luăm decizii automate cu efecte legale asupra ta</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Cum îți exerciți drepturile?</strong> Ne scrii pe <a href="mailto:gdpr@miez.digital">gdpr@miez.digital</a> cu cererea ta. Îți răspundem în <strong>maxim 30 de zile</strong> de la primire, conform GDPR. Dacă solicitarea e mai complexă, te anunțăm și putem prelungi cu până la 60 de zile.</p>
+    </div>
+
+    <h2 id="securitate">9. Securitatea datelor</h2>
+    <p>Aplicăm măsuri tehnice și organizaționale rezonabile pentru a proteja datele tale:</p>
+    <ul>
+      <li>Conexiuni criptate HTTPS pe tot site-ul</li>
+      <li>Acces la baze de date limitat la persoanele strict necesare</li>
+      <li>Contracte de procesare (DPA) cu toți furnizorii terți</li>
+      <li>Backup-uri criptate</li>
+      <li>Politici interne de securitate și acces</li>
+    </ul>
+    <p>Totuși, nicio transmisie pe internet sau metodă de stocare electronică nu este 100% sigură. Dacă apare o breșă de securitate care îți poate afecta drepturile, te vom notifica în maxim 72 de ore, conform GDPR.</p>
+
+    <h2 id="cookies">10. Cookies și tracking</h2>
+    <p>Folosim cookies pentru funcționare tehnică, analiză, și (doar cu consimțământ) marketing. Detaliile complete sunt în <a href="/politica-cookies">Politica de Cookies</a>.</p>
+    <p>Poți oricând să-ți modifici preferințele de cookies ștergând local storage-ul browserului sau folosind setările browserului.</p>
+
+    <h2 id="minori">11. Minori</h2>
+    <p>Serviciile Miez sunt destinate exclusiv persoanelor de <strong>18 ani și peste</strong>. Nu colectăm în mod conștient date de la minori. Dacă afli că un minor ne-a furnizat date, contactează-ne și le vom șterge imediat.</p>
+
+    <h2 id="modificari">12. Modificări ale politicii</h2>
+    <p>Această politică poate fi actualizată ocazional — pentru a reflecta schimbări legale, adăugarea de servicii noi, sau îmbunătățiri. Data ultimei actualizări e vizibilă în partea de sus a documentului.</p>
+    <p>Pentru modificări semnificative, te vom anunța prin email (dacă ai cont sau te-ai înscris la atelier) și/sau printr-un banner pe site cu 30 de zile înainte.</p>
+
+    <h2 id="contact">13. Contact și autoritatea de supraveghere</h2>
+    <p>Pentru orice întrebare legată de confidențialitate sau pentru a-ți exercita drepturile, ne poți contacta:</p>
+    <ul>
+      <li>Email: <a href="mailto:gdpr@miez.digital">gdpr@miez.digital</a></li>
+      <li>Poștă: Republica Moldova, or. Drochia, str. Mitropolit Varlaam, 115</li>
+    </ul>
+
+    <p>Dacă ai reclamații cu privire la modul în care procesăm datele tale și nu ești mulțumit de răspunsul nostru, ai dreptul să depui o plângere la autoritatea competentă.</p>
+
+    <h3>13.1 Pentru rezidenți UE (inclusiv România)</h3>
+    <div class="callout">
+      <p><strong>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</strong><br>
+      Adresă: B-dul G-ral. Gheorghe Magheru nr. 28-30, Sector 1, cod poștal 010336, București<br>
+      Telefon: +40.318.059.211<br>
+      Email: <a href="mailto:anspdcp@dataprotection.ro">anspdcp@dataprotection.ro</a><br>
+      Web: <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">www.dataprotection.ro</a></p>
+    </div>
+
+    <h3>13.2 Pentru rezidenți Republica Moldova</h3>
+    <div class="callout">
+      <p><strong>Centrul Național pentru Protecția Datelor cu Caracter Personal (CNPDCP)</strong><br>
+      Adresă: MD-2004, mun. Chișinău, str. Serghei Lazo 48, Republica Moldova<br>
+      Telefon: +373 22 820 801<br>
+      Email: <a href="mailto:centru@datepersonale.md">centru@datepersonale.md</a><br>
+      Web: <a href="https://datepersonale.md" target="_blank" rel="noopener">datepersonale.md</a></p>
+    </div>
+
+    <p style="margin-top: 48px; font-size: 13px; color: var(--gri);">Document generat pe baza cerințelor Regulamentului (UE) 2016/679 (GDPR), a Legii nr. 190/2018 privind măsurile de punere în aplicare a GDPR în România, și a Legii Republicii Moldova nr. 133/2011 privind protecția datelor cu caracter personal.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container-wide">
+    <div class="footer-inner">
+      <p>Miez Digital · <a href="https://miez.digital">miez.digital</a> · operat de SOFT VIBE S.R.L., Parcul IT Moldova</p>
+      <div class="footer-legal">
+        <a href="/politica-confidentialitate">Politica de Confidențialitate</a>
+        <a href="/termeni-si-conditii">Termeni și Condiții</a>
+        <a href="/politica-cookies">Politica Cookies</a>
+        <a href="mailto:contact@miez.digital">contact@miez.digital</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 12px;">Copyright © 2026 Miez Digital. Infrastructură AI construită, nu închiriată.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

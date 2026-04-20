@@ -4,23 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miez · OpenClaw 101 — Primul tău miez AI, construit într-o zi</title>
-<meta name="description" content="Atelier de o zi în București. Instalăm OpenClaw pe o VM a ta, setăm securitatea, construim agenți care lucrează în SaaS-urile tale. Pleci cu infrastructura AI în mâini. 29 aprilie 2026, 1000 RON preț de lansare.">
+<meta name="description" content="Atelier de o zi în București. Instalăm OpenClaw pe o mașină virtuală a ta, setăm securitatea, construim agenți care lucrează în SaaS-urile tale. Pleci cu infrastructura AI în mâini. 29 aprilie 2026, 1000 RON preț introductiv.">
 
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel Code — loaded only after consent -->
 <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '923440657173980');
-fbq('track', 'PageView');
+(function(){
+  function loadPixel(){
+    if (window._miezPixelLoaded) return;
+    window._miezPixelLoaded = true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '923440657173980');
+    fbq('track', 'PageView');
+  }
+  window._miezLoadPixel = loadPixel;
+  try {
+    if (localStorage.getItem('miezCookieConsent') === 'accept') loadPixel();
+  } catch(e){}
+})();
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=923440657173980&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel Code -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --chihlimbar: #D4A574;
@@ -37,7 +47,6 @@ fbq('track', 'PageView');
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -50,21 +59,12 @@ body {
   overflow-x: hidden;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.container-narrow {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
 /* NAV */
 .nav {
-  padding: 24px 0;
+  padding: 20px 0;
   border-bottom: 1px solid rgba(26,26,26,0.08);
   position: sticky;
   top: 0;
@@ -72,59 +72,30 @@ body {
   backdrop-filter: blur(12px);
   z-index: 100;
 }
-
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--negru);
-}
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--negru); }
 
 .logo-chip {
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   background: var(--negru);
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
-  box-shadow: 0 2px 12px rgba(26,26,26,0.15);
+  padding: 7px;
+  box-shadow: 0 2px 12px rgba(26,26,26,0.18);
 }
 
-.logo-chip img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: none;
-}
-
-.logo-mark {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.logo-mark { width: 100%; height: 100%; }
 
 .logo-text {
   font-family: var(--font-body);
-  font-weight: 800;
-  font-size: 26px;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.22em;
   color: var(--negru);
   line-height: 1;
-}
-
-.logo {
-  gap: 14px;
 }
 
 .nav-cta {
@@ -138,16 +109,10 @@ body {
   letter-spacing: 0.02em;
   transition: all 0.2s ease;
 }
-
 .nav-cta:hover { background: var(--caramida); }
 
 /* HERO */
-.hero {
-  padding: 80px 0 100px;
-  position: relative;
-  overflow: hidden;
-}
-
+.hero { padding: 80px 0 100px; position: relative; overflow: hidden; }
 .hero-meta {
   display: inline-flex;
   align-items: center;
@@ -161,52 +126,35 @@ body {
   letter-spacing: 0.03em;
   margin-bottom: 32px;
 }
-
 .hero-meta::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   background: var(--caramida);
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(36px, 6vw, 68px);
+  font-size: clamp(36px, 6vw, 64px);
   font-weight: 500;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  margin-bottom: 32px;
-  max-width: 900px;
+  margin-bottom: 28px;
+  max-width: 920px;
 }
-
-.hero h1 em {
-  font-style: italic;
-  color: var(--caramida);
-  font-weight: 400;
-}
+.hero h1 em { font-style: italic; color: var(--caramida); font-weight: 400; }
 
 .hero-sub {
-  font-size: clamp(18px, 2.2vw, 22px);
-  line-height: 1.5;
-  max-width: 680px;
+  font-size: clamp(18px, 2.2vw, 21px);
+  line-height: 1.55;
+  max-width: 720px;
   margin-bottom: 40px;
   color: var(--negru-soft);
 }
 
-.hero-cta-row {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-}
+.hero-cta-row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 48px; }
 
 .btn-primary {
   background: var(--negru);
@@ -223,23 +171,11 @@ body {
   transition: all 0.2s ease;
   border: 2px solid var(--negru);
 }
-
-.btn-primary:hover {
-  background: var(--caramida);
-  border-color: var(--caramida);
-  transform: translateY(-2px);
-}
-
-.btn-primary .arrow {
-  transition: transform 0.2s ease;
-}
-
+.btn-primary:hover { background: var(--caramida); border-color: var(--caramida); transform: translateY(-2px); }
+.btn-primary .arrow { transition: transform 0.2s ease; }
 .btn-primary:hover .arrow { transform: translateX(4px); }
 
-.hero-cta-note {
-  font-size: 14px;
-  color: var(--gri);
-}
+.hero-cta-note { font-size: 14px; color: var(--gri); }
 
 .hero-meta-line {
   display: flex;
@@ -250,32 +186,12 @@ body {
   border-top: 1px solid rgba(26,26,26,0.12);
   padding-top: 32px;
 }
-
-.hero-meta-line span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-meta-line span strong {
-  color: var(--negru);
-  font-weight: 600;
-}
+.hero-meta-line span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-meta-line span strong { color: var(--negru); font-weight: 600; }
 
 /* PROOF BANNER */
-.proof-banner {
-  background: var(--negru);
-  color: var(--crem);
-  padding: 40px 0;
-}
-
-.proof-banner-inner {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 40px;
-  text-align: center;
-}
-
+.proof-banner { background: var(--negru); color: var(--crem); padding: 40px 0; }
+.proof-banner-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; text-align: center; }
 .proof-stat .num {
   font-family: var(--font-display);
   font-size: 42px;
@@ -286,19 +202,10 @@ body {
   margin-bottom: 6px;
   display: block;
 }
-
-.proof-stat .label {
-  font-size: 13px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: rgba(245, 240, 230, 0.7);
-}
+.proof-stat .label { font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(245, 240, 230, 0.7); }
 
 /* SECTION */
-section {
-  padding: 90px 0;
-  border-bottom: 1px solid rgba(26,26,26,0.08);
-}
+section { padding: 90px 0; border-bottom: 1px solid rgba(26,26,26,0.08); }
 
 .section-label {
   font-size: 13px;
@@ -328,93 +235,34 @@ h3 {
   letter-spacing: -0.015em;
 }
 
-h4 {
-  font-family: var(--font-body);
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--negru);
-}
-
-p {
-  margin-bottom: 18px;
-  color: var(--negru-soft);
-}
-
+h4 { font-family: var(--font-body); font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--negru); }
+p { margin-bottom: 18px; color: var(--negru-soft); }
 p:last-child { margin-bottom: 0; }
+.lead { font-size: 20px; line-height: 1.55; color: var(--negru); }
 
-.lead {
-  font-size: 20px;
-  line-height: 1.55;
-  color: var(--negru);
-}
-
-ul.bullets {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-ul.bullets li {
-  position: relative;
-  padding-left: 28px;
-  margin-bottom: 12px;
-  color: var(--negru-soft);
-}
-
+ul.bullets { list-style: none; padding: 0; margin-bottom: 20px; }
+ul.bullets li { position: relative; padding-left: 28px; margin-bottom: 12px; color: var(--negru-soft); }
 ul.bullets li::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 12px;
-  width: 12px;
-  height: 12px;
+  left: 0; top: 12px;
+  width: 12px; height: 12px;
   background: var(--chihlimbar);
   border: 2px solid var(--negru);
   border-radius: 50%;
 }
 
 /* PAIN */
-.pain-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.pain-block {
-  background: var(--crem-soft);
-  padding: 32px;
-  border-left: 3px solid var(--caramida);
-}
-
-.pain-block em {
-  font-style: italic;
-  color: var(--caramida);
-  font-weight: 600;
-}
+.pain-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+.pain-block { background: var(--crem-soft); padding: 32px; border-left: 3px solid var(--caramida); }
+.pain-block em { font-style: italic; color: var(--caramida); font-weight: 600; }
 
 /* AGITATION / SPLIT */
-.split-scenarios {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin-top: 40px;
-}
-
-@media (min-width: 768px) {
-  .split-scenarios { grid-template-columns: 1fr 1fr; }
-}
-
-.scenario {
-  padding: 32px;
-  border: 1px solid rgba(26,26,26,0.12);
-  background: var(--crem);
-}
-
+.split-scenarios { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
+@media (min-width: 768px) { .split-scenarios { grid-template-columns: 1fr 1fr; } }
+.scenario { padding: 32px; border: 1px solid rgba(26,26,26,0.12); background: var(--crem); }
 .scenario.bad { border-color: rgba(179, 58, 58, 0.3); background: rgba(179, 58, 58, 0.04); }
 .scenario.good { border-color: rgba(212, 165, 116, 0.4); background: rgba(212, 165, 116, 0.08); }
-
 .scenario-tag {
   display: inline-block;
   padding: 4px 12px;
@@ -425,41 +273,18 @@ ul.bullets li::before {
   margin-bottom: 16px;
   border-radius: 2px;
 }
-
-.scenario.bad .scenario-tag {
-  background: var(--caramida);
-  color: var(--crem);
-}
-
-.scenario.good .scenario-tag {
-  background: var(--negru);
-  color: var(--chihlimbar);
-}
+.scenario.bad .scenario-tag { background: var(--caramida); color: var(--crem); }
+.scenario.good .scenario-tag { background: var(--negru); color: var(--chihlimbar); }
 
 /* WHY NOW */
-.why-now-items {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  margin-top: 48px;
-  counter-reset: why;
-}
-
-@media (min-width: 768px) {
-  .why-now-items { grid-template-columns: repeat(3, 1fr); }
-}
-
-.why-item {
-  position: relative;
-  padding-top: 56px;
-}
-
+.why-now-items { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 48px; counter-reset: why; }
+@media (min-width: 768px) { .why-now-items { grid-template-columns: repeat(3, 1fr); } }
+.why-item { position: relative; padding-top: 56px; }
 .why-item::before {
   counter-increment: why;
   content: "0" counter(why);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   font-family: var(--font-display);
   font-size: 40px;
   font-weight: 500;
@@ -469,35 +294,11 @@ ul.bullets li::before {
 }
 
 /* OFFER */
-.offer-timeline {
-  margin-top: 48px;
-}
-
-.offer-phase {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  padding: 32px 0;
-  border-bottom: 1px solid rgba(26,26,26,0.08);
-}
-
+.offer-timeline { margin-top: 48px; }
+.offer-phase { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 32px 0; border-bottom: 1px solid rgba(26,26,26,0.08); }
 .offer-phase:last-child { border-bottom: none; }
-
-@media (min-width: 768px) {
-  .offer-phase {
-    grid-template-columns: 220px 1fr;
-    gap: 48px;
-  }
-}
-
-.offer-phase-label {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--caramida);
-  line-height: 1.3;
-}
-
+@media (min-width: 768px) { .offer-phase { grid-template-columns: 220px 1fr; gap: 48px; } }
+.offer-phase-label { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--caramida); line-height: 1.3; }
 .offer-phase-label small {
   display: block;
   font-family: var(--font-body);
@@ -510,114 +311,33 @@ ul.bullets li::before {
 }
 
 /* VALUE STACK */
-.value-stack {
-  background: var(--negru);
-  color: var(--crem);
-  padding: 48px;
-  margin-top: 48px;
-  border-radius: 4px;
-}
-
-.value-stack-title {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 28px;
-  color: var(--chihlimbar);
-}
-
-.value-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 14px 0;
-  border-bottom: 1px dashed rgba(245, 240, 230, 0.15);
-}
-
+.value-stack { background: var(--negru); color: var(--crem); padding: 48px; margin-top: 48px; border-radius: 4px; }
+.value-stack-title { font-family: var(--font-display); font-size: 24px; font-weight: 500; margin-bottom: 28px; color: var(--chihlimbar); }
+.value-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px dashed rgba(245, 240, 230, 0.15); gap: 16px; }
 .value-row:last-of-type { border-bottom: 2px solid var(--chihlimbar); margin-bottom: 24px; }
-
 .value-row .label-text { font-size: 15px; }
-.value-row .price {
-  font-family: var(--font-display);
-  font-weight: 500;
-  color: var(--chihlimbar);
-  white-space: nowrap;
-  padding-left: 16px;
-}
-
-.total-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 16px 0;
-  font-family: var(--font-display);
-}
-
+.value-row .label-note { display: block; font-size: 12px; color: rgba(245, 240, 230, 0.5); margin-top: 4px; }
+.value-row .price { font-family: var(--font-display); font-weight: 500; color: var(--chihlimbar); white-space: nowrap; padding-left: 16px; }
+.total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; font-family: var(--font-display); }
 .total-row .label-text { font-size: 22px; font-weight: 500; }
 .total-row .price { font-size: 28px; font-weight: 600; color: var(--chihlimbar); }
 
-.price-today {
-  margin-top: 32px;
-  padding: 24px;
-  background: var(--caramida);
-  border-radius: 4px;
-  text-align: center;
-}
-
-.price-today-label {
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  color: rgba(245, 240, 230, 0.85);
-}
-
-.price-today-value {
-  font-family: var(--font-display);
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.price-today-note {
-  font-size: 13px;
-  color: rgba(245, 240, 230, 0.8);
-}
+.price-today { margin-top: 32px; padding: 28px; background: var(--caramida); border-radius: 4px; text-align: center; }
+.price-today-label { font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; color: rgba(245, 240, 230, 0.88); }
+.price-today-value { font-family: var(--font-display); font-size: 56px; font-weight: 600; line-height: 1; margin-bottom: 10px; color: var(--crem); }
+.price-today-ratio { font-family: var(--font-display); font-style: italic; font-size: 16px; color: rgba(245, 240, 230, 0.85); margin-top: 6px; }
 
 /* PROOF DETAILED */
-.proof-card {
-  background: var(--crem-soft);
-  padding: 48px;
-  margin-top: 32px;
-  border-left: 4px solid var(--chihlimbar);
-}
-
+.proof-card { background: var(--crem-soft); padding: 48px; margin-top: 32px; border-left: 4px solid var(--chihlimbar); }
 .proof-card h3 { color: var(--negru); }
-
-.proof-list {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0;
-}
-
-.proof-list li {
-  padding: 14px 0;
-  padding-left: 32px;
-  position: relative;
-  border-bottom: 1px solid rgba(26,26,26,0.08);
-  color: var(--negru);
-}
-
+.proof-list { list-style: none; padding: 0; margin: 24px 0; }
+.proof-list li { padding: 14px 0; padding-left: 32px; position: relative; border-bottom: 1px solid rgba(26,26,26,0.08); color: var(--negru); }
 .proof-list li:last-child { border-bottom: none; }
-
 .proof-list li::before {
   content: '✓';
   position: absolute;
-  left: 0;
-  top: 14px;
-  width: 20px;
-  height: 20px;
+  left: 0; top: 14px;
+  width: 20px; height: 20px;
   background: var(--negru);
   color: var(--chihlimbar);
   border-radius: 50%;
@@ -627,211 +347,96 @@ ul.bullets li::before {
   font-size: 12px;
   font-weight: 700;
 }
-
-.proof-highlight {
-  background: var(--negru);
-  color: var(--crem);
-  padding: 32px;
-  margin-top: 32px;
-  border-radius: 4px;
-}
-
-.proof-highlight h4 {
-  color: var(--chihlimbar);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  margin-bottom: 16px;
-  font-weight: 500;
-}
-
+.proof-highlight { background: var(--negru); color: var(--crem); padding: 32px; margin-top: 32px; border-radius: 4px; }
+.proof-highlight h4 { color: var(--chihlimbar); font-family: var(--font-display); font-style: italic; font-size: 22px; margin-bottom: 16px; font-weight: 500; }
 .proof-highlight p { color: rgba(245, 240, 230, 0.9); }
 
-/* FOR WHO */
-.for-who-grid {
+/* COORDINATORS */
+.coordinators-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
+@media (min-width: 768px) { .coordinators-grid { grid-template-columns: 1fr 1fr; } }
+.coordinator { background: var(--crem-soft); padding: 40px; border-top: 4px solid var(--chihlimbar); display: flex; flex-direction: column; }
+.coordinator-name { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 6px; color: var(--negru); }
+.coordinator-role { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--caramida); margin-bottom: 20px; }
+.coordinator-bio { color: var(--negru-soft); font-size: 15px; line-height: 1.65; margin-bottom: 20px; }
+.coordinator-links { display: flex; flex-wrap: wrap; gap: 8px 16px; padding-top: 20px; border-top: 1px solid rgba(26,26,26,0.12); font-size: 13px; margin-top: auto; }
+.coordinator-links a { color: var(--negru); text-decoration: none; border-bottom: 1px dotted var(--chihlimbar-dark); transition: color 0.2s ease; }
+.coordinator-links a:hover { color: var(--caramida); }
+
+/* TECH TEAM block */
+.tech-team {
+  margin-top: 48px;
+  padding: 36px 40px;
+  background: var(--negru);
+  color: var(--crem);
+  border-radius: 4px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto 1fr;
   gap: 32px;
-  margin-top: 40px;
+  align-items: center;
 }
-
-@media (min-width: 768px) {
-  .for-who-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) { .tech-team { grid-template-columns: 1fr; padding: 28px; gap: 20px; } }
+.tech-team-icon {
+  width: 80px; height: 80px;
+  border: 2px solid var(--chihlimbar);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
-
-.for-who {
-  padding: 32px;
-  background: var(--crem-soft);
-  border-top: 4px solid var(--chihlimbar);
-}
-
-.not-for-who {
-  padding: 32px;
-  background: var(--crem-soft);
-  border-top: 4px solid var(--caramida);
-}
-
-/* OBJECTIONS */
-.objection {
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(26,26,26,0.12);
-}
-
-.objection:last-child { border-bottom: none; }
-
-.objection-q {
+.tech-team-icon svg { width: 40px; height: 40px; }
+.tech-team h4 {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 22px;
-  color: var(--caramida);
-  margin-bottom: 12px;
-  line-height: 1.3;
+  color: var(--chihlimbar);
+  font-weight: 500;
+  margin-bottom: 10px;
 }
+.tech-team p { color: rgba(245, 240, 230, 0.85); margin-bottom: 0; font-size: 15px; }
 
+/* FOR WHO */
+.for-who-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
+@media (min-width: 768px) { .for-who-grid { grid-template-columns: 1fr 1fr; } }
+.for-who { padding: 32px; background: var(--crem-soft); border-top: 4px solid var(--chihlimbar); }
+.not-for-who { padding: 32px; background: var(--crem-soft); border-top: 4px solid var(--caramida); }
+
+/* OBJECTIONS */
+.objection { padding: 28px 0; border-bottom: 1px solid rgba(26,26,26,0.12); }
+.objection:last-child { border-bottom: none; }
+.objection-q { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--caramida); margin-bottom: 12px; line-height: 1.3; }
 .objection-a { color: var(--negru); }
 
 /* GUARANTEE */
-.guarantee {
-  background: var(--chihlimbar);
-  color: var(--negru);
-  padding: 64px 48px;
-  margin: 48px 0;
-  border-radius: 4px;
-  text-align: center;
-  position: relative;
-}
-
-.guarantee-seal {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  border: 3px solid var(--negru);
-  border-radius: 50%;
-  margin-bottom: 24px;
-}
-
-.guarantee h2 {
-  color: var(--negru);
-  margin-bottom: 20px;
-  font-style: italic;
-}
-
-.guarantee p {
-  color: var(--negru);
-  font-size: 18px;
-  max-width: 600px;
-  margin: 0 auto 16px;
-}
+.guarantee { background: var(--chihlimbar); color: var(--negru); padding: 64px 48px; margin: 48px 0; border-radius: 4px; text-align: center; position: relative; }
+.guarantee-seal { display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 3px solid var(--negru); border-radius: 50%; margin-bottom: 24px; }
+.guarantee h2 { color: var(--negru); margin-bottom: 20px; font-style: italic; }
+.guarantee p { color: var(--negru); font-size: 18px; max-width: 600px; margin: 0 auto 16px; }
 
 /* PREREQS */
-.prereq-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-@media (min-width: 768px) {
-  .prereq-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-.prereq-item {
-  background: var(--crem-soft);
-  padding: 24px;
-  border-left: 3px solid var(--chihlimbar);
-}
+.prereq-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
+@media (min-width: 768px) { .prereq-grid { grid-template-columns: repeat(2, 1fr); } }
+.prereq-item { background: var(--crem-soft); padding: 24px; border-left: 3px solid var(--chihlimbar); }
 
 /* SCARCITY + CTA */
-.scarcity-section {
-  background: var(--negru);
-  color: var(--crem);
-  padding: 100px 0;
-}
-
+.scarcity-section { background: var(--negru); color: var(--crem); padding: 100px 0; }
 .scarcity-section .section-label { color: var(--chihlimbar); }
 .scarcity-section h2 { color: var(--crem); }
 .scarcity-section p { color: rgba(245, 240, 230, 0.85); }
-
-.scarcity-numbers {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin: 48px 0;
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .scarcity-numbers { grid-template-columns: repeat(3, 1fr); }
-}
-
-.scarcity-num {
-  padding: 32px 16px;
-  border: 1px solid rgba(245, 240, 230, 0.2);
-  background: rgba(245, 240, 230, 0.03);
-}
-
-.scarcity-num .big {
-  font-family: var(--font-display);
-  font-size: 56px;
-  font-weight: 500;
-  color: var(--chihlimbar);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.scarcity-num .label {
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(245, 240, 230, 0.8);
-}
+.scarcity-numbers { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; text-align: center; }
+@media (min-width: 768px) { .scarcity-numbers { grid-template-columns: repeat(3, 1fr); } }
+.scarcity-num { padding: 32px 16px; border: 1px solid rgba(245, 240, 230, 0.2); background: rgba(245, 240, 230, 0.03); }
+.scarcity-num .big { font-family: var(--font-display); font-size: 56px; font-weight: 500; color: var(--chihlimbar); line-height: 1; letter-spacing: -0.02em; display: block; margin-bottom: 8px; }
+.scarcity-num .label { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245, 240, 230, 0.8); }
 
 /* FORM */
-.form-section {
-  background: var(--crem);
-  padding: 80px 0;
-}
-
-.form-card {
-  background: var(--negru);
-  color: var(--crem);
-  padding: 56px;
-  border-radius: 4px;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-.form-card h2 {
-  color: var(--crem);
-  font-size: 36px;
-  margin-bottom: 12px;
-}
-
-.form-card .form-sub {
-  color: rgba(245, 240, 230, 0.85);
-  margin-bottom: 32px;
-}
-
-.form-field {
-  margin-bottom: 20px;
-}
-
-.form-field label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--chihlimbar);
-  margin-bottom: 8px;
-}
-
-.form-field input,
-.form-field select {
+.form-section { background: var(--crem); padding: 80px 0; }
+.form-card { background: var(--negru); color: var(--crem); padding: 56px; border-radius: 4px; max-width: 640px; margin: 0 auto; }
+.form-card h2 { color: var(--crem); font-size: 36px; margin-bottom: 12px; }
+.form-card .form-sub { color: rgba(245, 240, 230, 0.85); margin-bottom: 32px; }
+.form-field { margin-bottom: 20px; }
+.form-field label { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--chihlimbar); margin-bottom: 8px; }
+.form-field input, .form-field select {
   width: 100%;
   padding: 14px 16px;
   background: rgba(245, 240, 230, 0.08);
@@ -842,12 +447,35 @@ ul.bullets li::before {
   border-radius: 4px;
   transition: border 0.2s ease;
 }
+.form-field input:focus, .form-field select:focus { outline: none; border-color: var(--chihlimbar); }
 
-.form-field input:focus,
-.form-field select:focus {
-  outline: none;
-  border-color: var(--chihlimbar);
+.form-consent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 24px 0 8px;
+  padding: 16px;
+  background: rgba(245, 240, 230, 0.04);
+  border-radius: 4px;
 }
+.form-consent input[type="checkbox"] {
+  width: 18px; height: 18px;
+  margin-top: 2px;
+  accent-color: var(--chihlimbar);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.form-consent label {
+  font-size: 13px;
+  color: rgba(245, 240, 230, 0.85);
+  letter-spacing: normal;
+  text-transform: none;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  cursor: pointer;
+}
+.form-consent label a { color: var(--chihlimbar); text-decoration: underline; }
 
 .form-submit {
   width: 100%;
@@ -864,92 +492,80 @@ ul.bullets li::before {
   transition: all 0.2s ease;
   margin-top: 8px;
 }
-
-.form-submit:hover {
-  background: var(--caramida);
-  color: var(--crem);
-}
-
-.form-note {
-  text-align: center;
-  font-size: 13px;
-  color: rgba(245, 240, 230, 0.6);
-  margin-top: 20px;
-}
+.form-submit:hover { background: var(--caramida); color: var(--crem); }
+.form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.form-note { text-align: center; font-size: 13px; color: rgba(245, 240, 230, 0.6); margin-top: 20px; }
 
 /* FAQ */
-.faq-item {
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(26,26,26,0.1);
-}
-
-.faq-q {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--negru);
-  margin-bottom: 12px;
-}
-
-.faq-a {
-  color: var(--negru-soft);
-}
+.faq-item { padding: 24px 0; border-bottom: 1px solid rgba(26,26,26,0.1); }
+.faq-q { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--negru); margin-bottom: 12px; }
+.faq-a { color: var(--negru-soft); }
 
 /* FINAL */
-.final-section {
-  padding: 120px 0;
-  text-align: center;
-  background: var(--crem-soft);
-}
-
-.final-section h2 {
-  font-size: clamp(32px, 4.5vw, 52px);
-  max-width: 900px;
-  margin: 0 auto 32px;
-  font-style: italic;
-}
-
-.final-section h2 em {
-  font-style: normal;
-  color: var(--caramida);
-}
-
-.final-section .lead {
-  max-width: 620px;
-  margin: 0 auto 40px;
-}
+.final-section { padding: 120px 0; text-align: center; background: var(--crem-soft); }
+.final-section h2 { font-size: clamp(32px, 4.5vw, 52px); max-width: 900px; margin: 0 auto 32px; font-style: italic; }
+.final-section h2 em { font-style: normal; color: var(--caramida); }
+.final-section .lead { max-width: 620px; margin: 0 auto 40px; }
 
 /* FOOTER */
-footer {
+footer { background: var(--negru); color: rgba(245, 240, 230, 0.6); padding: 48px 0; }
+footer .footer-inner { text-align: center; }
+footer a { color: var(--chihlimbar); text-decoration: none; }
+footer a:hover { color: var(--crem); }
+footer p { color: rgba(245, 240, 230, 0.6); font-size: 14px; margin-bottom: 8px; }
+.footer-legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-top: 16px; font-size: 13px; }
+.footer-legal a { color: rgba(245, 240, 230, 0.7); border-bottom: 1px dotted rgba(212, 165, 116, 0.4); padding-bottom: 1px; }
+
+/* COOKIE BANNER */
+.cookie-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
   background: var(--negru);
-  color: rgba(245, 240, 230, 0.6);
-  padding: 48px 0;
-  text-align: center;
+  color: var(--crem);
+  padding: 20px 24px;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
+  border-top: 2px solid var(--chihlimbar);
 }
-
-footer a {
-  color: var(--chihlimbar);
-  text-decoration: none;
+.cookie-banner.show { display: block; }
+.cookie-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-
-footer p {
-  color: rgba(245, 240, 230, 0.6);
+.cookie-text {
   font-size: 14px;
+  color: rgba(245, 240, 230, 0.88);
+  line-height: 1.5;
+  flex: 1 1 400px;
 }
+.cookie-text a { color: var(--chihlimbar); text-decoration: underline; }
+.cookie-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.cookie-btn {
+  padding: 10px 20px;
+  border: 1px solid rgba(245, 240, 230, 0.3);
+  background: transparent;
+  color: var(--crem);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.cookie-btn:hover { border-color: var(--chihlimbar); }
+.cookie-btn.accept { background: var(--chihlimbar); color: var(--negru); border-color: var(--chihlimbar); }
+.cookie-btn.accept:hover { background: var(--caramida); color: var(--crem); border-color: var(--caramida); }
 
 /* ANIMATIONS */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
 @media (max-width: 640px) {
   section { padding: 60px 0; }
   .hero { padding: 60px 0 80px; }
@@ -957,6 +573,10 @@ footer p {
   .form-card { padding: 40px 24px; }
   .scarcity-section { padding: 70px 0; }
   .final-section { padding: 80px 0; }
+  .coordinator { padding: 28px; }
+  .cookie-inner { flex-direction: column; align-items: stretch; }
+  .cookie-buttons { width: 100%; }
+  .cookie-btn { flex: 1; }
 }
 </style>
 </head>
@@ -968,67 +588,41 @@ footer p {
     <div class="nav-inner">
       <a href="#" class="logo">
         <div class="logo-chip">
-          <img id="logo-img" alt="Miez" />
-          <svg id="logo-svg" class="logo-mark" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"
-               fill="none" stroke="#D4A574" stroke-width="1.2"
+          <svg class="logo-mark" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"
+               fill="none" stroke="#D4A574" stroke-width="1.6"
                stroke-linecap="round" stroke-linejoin="round">
-            
-            <!-- OUTER M FRAME -->
-            <line x1="30" y1="22" x2="30" y2="158" />
-            <line x1="70" y1="35" x2="70" y2="158" />
-            <line x1="170" y1="35" x2="170" y2="158" />
-            <line x1="210" y1="22" x2="210" y2="158" />
-            <line x1="30" y1="158" x2="70" y2="158" />
-            <line x1="170" y1="158" x2="210" y2="158" />
-            <line x1="30" y1="22" x2="70" y2="35" />
-            <line x1="210" y1="22" x2="170" y2="35" />
-            
-            <!-- OUTER V -->
-            <line x1="30" y1="22" x2="120" y2="120" />
-            <line x1="210" y1="22" x2="120" y2="120" />
-            
-            <!-- INNER V -->
-            <line x1="70" y1="35" x2="120" y2="135" />
-            <line x1="170" y1="35" x2="120" y2="135" />
-            <line x1="115" y1="135" x2="125" y2="135" />
-            <line x1="120" y1="135" x2="120" y2="158" />
-            
-            <!-- LEFT COLUMN FACETS -->
-            <line x1="30" y1="22" x2="70" y2="158" />
-            <line x1="70" y1="35" x2="30" y2="158" />
-            <line x1="30" y1="78" x2="70" y2="82" />
-            <line x1="30" y1="122" x2="70" y2="124" />
-            <line x1="30" y1="22" x2="70" y2="82" />
-            <line x1="70" y1="35" x2="30" y2="78" />
-            <line x1="30" y1="78" x2="70" y2="124" />
-            <line x1="70" y1="82" x2="30" y2="122" />
-            <line x1="30" y1="122" x2="70" y2="158" />
-            <line x1="70" y1="124" x2="30" y2="158" />
-            
-            <!-- RIGHT COLUMN FACETS -->
-            <line x1="210" y1="22" x2="170" y2="158" />
-            <line x1="170" y1="35" x2="210" y2="158" />
-            <line x1="210" y1="78" x2="170" y2="82" />
-            <line x1="210" y1="122" x2="170" y2="124" />
-            <line x1="210" y1="22" x2="170" y2="82" />
-            <line x1="170" y1="35" x2="210" y2="78" />
-            <line x1="210" y1="78" x2="170" y2="124" />
-            <line x1="170" y1="82" x2="210" y2="122" />
-            <line x1="210" y1="122" x2="170" y2="158" />
-            <line x1="170" y1="124" x2="210" y2="158" />
-            
-            <!-- V CENTRAL FACETS -->
-            <line x1="120" y1="120" x2="70" y2="82" />
-            <line x1="120" y1="120" x2="170" y2="82" />
-            <line x1="70" y1="35" x2="170" y2="35" />
-            <line x1="30" y1="22" x2="170" y2="35" />
-            <line x1="210" y1="22" x2="70" y2="35" />
-            <line x1="70" y1="82" x2="170" y2="82" />
-            <line x1="120" y1="120" x2="70" y2="124" />
-            <line x1="120" y1="120" x2="170" y2="124" />
-            
-            <!-- CENTRAL CIRCLE -->
-            <circle cx="120" cy="120" r="13" fill="#D4A574" stroke="none" />
+            <!-- Outer legs of M -->
+            <line x1="28" y1="28" x2="28" y2="172"/>
+            <line x1="212" y1="28" x2="212" y2="172"/>
+            <!-- Inner legs -->
+            <line x1="74" y1="46" x2="74" y2="172"/>
+            <line x1="166" y1="46" x2="166" y2="172"/>
+            <!-- Top angled connections -->
+            <line x1="28" y1="28" x2="74" y2="46"/>
+            <line x1="212" y1="28" x2="166" y2="46"/>
+            <!-- V forming M peaks -->
+            <line x1="74" y1="46" x2="120" y2="132"/>
+            <line x1="166" y1="46" x2="120" y2="132"/>
+            <!-- Base connections -->
+            <line x1="28" y1="172" x2="74" y2="172"/>
+            <line x1="166" y1="172" x2="212" y2="172"/>
+            <!-- Art Deco radiating network from kernel -->
+            <line x1="28" y1="28" x2="120" y2="132"/>
+            <line x1="212" y1="28" x2="120" y2="132"/>
+            <line x1="28" y1="172" x2="120" y2="132"/>
+            <line x1="212" y1="172" x2="120" y2="132"/>
+            <!-- Cross diagonals (Art Deco texture) -->
+            <line x1="28" y1="28" x2="74" y2="172"/>
+            <line x1="212" y1="28" x2="166" y2="172"/>
+            <line x1="74" y1="46" x2="28" y2="172"/>
+            <line x1="166" y1="46" x2="212" y2="172"/>
+            <!-- Horizontal mid-bars -->
+            <line x1="28" y1="72" x2="74" y2="72"/>
+            <line x1="166" y1="72" x2="212" y2="72"/>
+            <line x1="28" y1="116" x2="74" y2="116"/>
+            <line x1="166" y1="116" x2="212" y2="116"/>
+            <!-- Kernel (central mass) -->
+            <circle cx="120" cy="132" r="12" fill="#D4A574" stroke="none"/>
           </svg>
         </div>
         <span class="logo-text">MIEZ</span>
@@ -1041,20 +635,17 @@ footer p {
 <!-- HERO -->
 <header class="hero">
   <div class="container">
-    <div class="hero-meta">ATELIER PILOT · MIERCURI 29 APRILIE</div>
-    <h1>Pleci miercuri seara cu primul tău <em>agent AI</em> rulând pe o mașină a ta. Fără abonament.</h1>
-    <p class="hero-sub">Un atelier de o zi, în București. Îți instalăm OpenClaw pe o mașină virtuală, îți setăm securitatea și construim împreună 1–2 agenți care lucrează în SaaS-urile pe care le ai deja. Pleci cu miezul infrastructurii tale AI în mâinile tale.</p>
+    <div class="hero-meta">ATELIER PILOT · MIERCURI 29 APRILIE 2026</div>
+    <h1>Dacă ai o clinică, un salon sau o afacere HoReCa în România, pleci miercuri după-amiaza cu primul tău <em>agent AI</em> rulând pe o mașină virtuală a ta.</h1>
+    <p class="hero-sub">Un atelier de o zi, în București. Îți configurăm o mașină virtuală dedicată, instalăm stack-ul OpenClaw + Claude, setăm securitatea și construim împreună 1–2 agenți care lucrează în SaaS-urile pe care le ai deja. Pleci cu miezul infrastructurii tale AI în mâinile tale.</p>
     <div class="hero-cta-row">
-      <a href="#inscriere" class="btn-primary">
-        Rezervă locul — 1000 RON
-        <span class="arrow">→</span>
-      </a>
-      <span class="hero-cta-note">20 locuri · Preț de lansare · Plată securizată</span>
+      <a href="#inscriere" class="btn-primary">Rezervă locul — 1000 RON <span class="arrow">→</span></a>
+      <span class="hero-cta-note">20 locuri · Preț introductiv · Plată securizată</span>
     </div>
     <div class="hero-meta-line">
       <span>📅 <strong>Miercuri 29 aprilie 2026</strong></span>
+      <span>⏱ <strong>9:00 — 17:00</strong></span>
       <span>📍 <strong>Sector 2, București</strong></span>
-      <span>⏱ <strong>8 ore intensive</strong></span>
       <span>👥 <strong>20 participanți</strong></span>
     </div>
   </div>
@@ -1064,22 +655,10 @@ footer p {
 <div class="proof-banner">
   <div class="container">
     <div class="proof-banner-inner">
-      <div class="proof-stat">
-        <span class="num">5</span>
-        <span class="label">Agenți în producție la PodoCliniq</span>
-      </div>
-      <div class="proof-stat">
-        <span class="num">19.000+</span>
-        <span class="label">Interacțiuni procesate în 2025</span>
-      </div>
-      <div class="proof-stat">
-        <span class="num">~2</span>
-        <span class="label">Angajați eliberați din rutină</span>
-      </div>
-      <div class="proof-stat">
-        <span class="num">8</span>
-        <span class="label">Luni de funcționare continuă</span>
-      </div>
+      <div class="proof-stat"><span class="num">5</span><span class="label">Agenți în producție la PodoCliniq</span></div>
+      <div class="proof-stat"><span class="num">9.600+</span><span class="label">Mesaje procesate de agenți AI</span></div>
+      <div class="proof-stat"><span class="num">~2</span><span class="label">FTE de volum de muncă automatizat</span></div>
+      <div class="proof-stat"><span class="num">8</span><span class="label">Luni de stack AI în producție</span></div>
     </div>
   </div>
 </div>
@@ -1089,28 +668,25 @@ footer p {
   <div class="container-narrow">
     <span class="section-label">Problema reală</span>
     <h2>Dacă ai o afacere B2C în România, știi exact cum arată dimineața.</h2>
-    <p class="lead">Nu pentru că faci ceva greșit. Ci pentru că stack-ul tău actual — SaaS-uri fragmentate, recepție supraîncărcată, date scattered în 7 locuri — are o limită naturală. Iar tu ai atins-o.</p>
-
+    <p class="lead">Nu pentru că faci ceva greșit. Ci pentru că stack-ul tău actual — SaaS-uri fragmentate, recepție supraîncărcată, date împrăștiate în 7 locuri — are o limită naturală. Iar tu ai atins-o.</p>
     <div class="pain-grid">
       <div class="pain-block">
         <ul class="bullets">
           <li>40 de mesaje pe WhatsApp, fiecare cu aceeași întrebare despre program sau preț</li>
-          <li>Rapoarte pe care cineva le compilează manual din 3 SaaS-uri diferite</li>
+          <li>Rapoarte compilate manual din 3 SaaS-uri diferite</li>
           <li>Follow-up-uri uitate la clienți care nu s-au mai întors</li>
           <li>O „persoană de recepție" care e un gât-de-sticlă pentru tot ce intră în firmă</li>
           <li>Un stack de subscripții care crește lunar și nu mai știi exact care ce face</li>
         </ul>
       </div>
     </div>
-
     <h3 style="margin-top: 48px;">Ai încercat probabil deja:</h3>
     <ul class="bullets">
       <li><strong>ChatGPT</strong> pentru răspunsuri, dar nu are acces la datele tale</li>
       <li><strong>Un SaaS „AI pentru afaceri"</strong> care promite multe și livrează puțin (și costă 200 EUR/lună)</li>
       <li><strong>Să angajezi un asistent</strong> — dar nu rezolvă problema, doar o împarte la două persoane</li>
     </ul>
-
-    <p class="lead" style="margin-top: 32px;">Problema reală nu e lipsa de AI. E <em style="color: var(--caramida); font-style: italic;">lipsa de acces al AI-ului la datele tale</em>, pe infrastructura ta, sub controlul tău.</p>
+    <p class="lead" style="margin-top: 32px;">Problema reală nu e lipsa de AI. E faptul că <em style="color: var(--caramida); font-style: italic;">AI-ul nu are acces la datele tale</em>, pe infrastructura ta, sub controlul tău.</p>
   </div>
 </section>
 
@@ -1119,7 +695,6 @@ footer p {
   <div class="container-narrow">
     <span class="section-label">Două scenarii, același 3 ani</span>
     <h2>Gândește-te în urmă cu trei ani. Acum gândește-te trei ani în față.</h2>
-
     <div class="split-scenarios">
       <div class="scenario bad">
         <span class="scenario-tag">Scenariul obișnuit</span>
@@ -1130,11 +705,10 @@ footer p {
       <div class="scenario good">
         <span class="scenario-tag">Scenariul Miez</span>
         <h3>Începi astăzi să construiești miezul</h3>
-        <p>În 3 ani ai o infrastructură AI proprie. Un sistem care citește datele tale din orice SaaS folosești (cu sau fără API) și face acțiuni pentru tine. Un sistem pe care tu îl extinzi, la propriul ritm, cu costuri predictibile.</p>
+        <p>În 3 ani ai o infrastructură AI proprie. Un sistem care citește datele tale din orice SaaS folosești și face acțiuni pentru tine. Un sistem pe care tu îl extinzi, la propriul ritm, cu costuri predictibile.</p>
         <p><strong>Miezul trăiește cât trăiește firma ta.</strong></p>
       </div>
     </div>
-
     <p class="lead" style="margin-top: 40px; text-align: center;">Diferența între cele două viitoare? <em style="color: var(--caramida); font-style: italic;">Începi astăzi sau peste 3 ani.</em></p>
   </div>
 </section>
@@ -1145,11 +719,10 @@ footer p {
     <span class="section-label">De ce acum</span>
     <h2>Trei lucruri s-au întâmplat în ultimele 12 luni. Combinația lor schimbă tot.</h2>
     <p class="lead">Până acum, infrastructura AI proprie era privilegiul corporațiilor cu buget de milioane. Trei schimbări au prăbușit bariera de intrare.</p>
-
     <div class="why-now-items">
       <div class="why-item">
         <h3>OpenClaw</h3>
-        <p>Framework open-source care permite agenților AI să interacționeze cu orice site sau SaaS ca un om — <strong>fără API</strong>. Ce era imposibil de automatizat acum un an (un SaaS închis) e astăzi banal.</p>
+        <p>Gateway AI open-source pe care îl rulezi pe infrastructura ta. Orchestrează agenți care citesc, scriu și acționează — prin mesagerie, browser automation, fișiere, email. Anul trecut un astfel de stack nu exista coerent. <strong>Acum da.</strong></p>
       </div>
       <div class="why-item">
         <h3>Claude 4.7</h3>
@@ -1160,8 +733,7 @@ footer p {
         <p>O mașină virtuală dedicată pentru agenți costă <strong>20–40 EUR/lună</strong>. Cât alte două subscripții SaaS. Prima dată când infrastructura AI e accesibilă pentru buget de startup.</p>
       </div>
     </div>
-
-    <p class="lead" style="margin-top: 48px;">Aceste trei lucruri nu erau adevărate acum un an. Într-un an, prețul vor fi alții pe piață. Astăzi e fereastra.</p>
+    <p class="lead" style="margin-top: 48px;">Aceste trei lucruri nu erau adevărate acum un an. Într-un an, piața va arăta altfel. Astăzi e fereastra.</p>
   </div>
 </section>
 
@@ -1170,15 +742,14 @@ footer p {
   <div class="container-narrow">
     <span class="section-label">Ce primești concret</span>
     <h2>Structura atelierului — 3 faze, o singură ofertă.</h2>
-    <p class="lead">Nu e „un curs de o zi" cu slide-uri și PowerPoint. E implementare ghidată, cu muncă în prealabil, zi intensivă de build, și suport în primele 30 de zile.</p>
-
+    <p class="lead">Nu e „un curs de o zi" cu slide-uri și PowerPoint. E implementare ghidată, cu pregătire înainte, zi intensivă de construcție și suport în primele 30 de zile.</p>
     <div class="offer-timeline">
       <div class="offer-phase">
         <div class="offer-phase-label">Pre-atelier <small>cu 1 săpt înainte</small></div>
         <div>
           <ul class="bullets">
             <li><strong>Call de discovery 30 min</strong> — mapăm arhitectura actuală a afacerii tale</li>
-            <li><strong>VM configurată de echipa Miez</strong> înainte să ajungi tu la atelier</li>
+            <li><strong>Mașină virtuală configurată de echipa Miez</strong> înainte să ajungi tu la atelier</li>
             <li><strong>OpenClaw instalat și actualizat</strong> la ultima versiune stabilă</li>
             <li><strong>Acces Claude API pre-configurat</strong></li>
             <li><strong>Listă personalizată</strong> cu ce să aduci cu tine în ziua atelierului</li>
@@ -1186,13 +757,13 @@ footer p {
         </div>
       </div>
       <div class="offer-phase">
-        <div class="offer-phase-label">Ziua atelierului <small>miercuri, 8 ore intensive</small></div>
+        <div class="offer-phase-label">Ziua atelierului <small>miercuri, 9:00 — 17:00</small></div>
         <div>
           <ul class="bullets">
-            <li><strong>Setup securitate pe VM-ul tău</strong> — firewall, credențiale, access control</li>
-            <li><strong>Conectare OpenClaw la SaaS-urile tale</strong> (CRM, calendar, email, social media, facturare)</li>
+            <li><strong>Hardening de securitate pe VM-ul tău</strong> — firewall, credențiale, access control, audit log</li>
+            <li><strong>Conectare OpenClaw la SaaS-urile tale</strong> (CRM, calendar, email, mesagerie, facturare)</li>
             <li><strong>Construcție live a 1–2 agenți custom</strong> pentru afacerea ta</li>
-            <li><strong>Bibliotecă de 3–5 skills pre-configurate</strong> pe care le duci acasă</li>
+            <li><strong>Bibliotecă de 5+ skills pre-configurate</strong> pe care le duci acasă</li>
             <li><strong>Documentație personalizată</strong> — ce s-a construit, cum funcționează, cum extinzi</li>
           </ul>
         </div>
@@ -1215,42 +786,58 @@ footer p {
 <section>
   <div class="container-narrow">
     <span class="section-label">Ce ar costa piesă cu piesă</span>
-    <h2>Ca să fie clar ce primești față de ce ai plăti separat.</h2>
-
+    <h2>Ca să fie clar ce primești față de ce ai plăti separat pe piață.</h2>
     <div class="value-stack">
       <div class="value-stack-title">Valoare obiectivă a atelierului</div>
+
       <div class="value-row">
-        <span class="label-text">VM setup + OpenClaw install + security (specialist IT)</span>
-        <span class="price">800 RON</span>
+        <span class="label-text">
+          Mașină virtuală dedicată + OpenClaw install + hardening securitate
+          <span class="label-note">8h DevOps senior × 300 RON/h · cea mai subevaluată piesă din atelier</span>
+        </span>
+        <span class="price">2.500 RON</span>
       </div>
+
       <div class="value-row">
-        <span class="label-text">Conectare 3–5 SaaS-uri la OpenClaw</span>
-        <span class="price">1.200 RON</span>
+        <span class="label-text">
+          Conectare 3–5 SaaS-uri la OpenClaw
+          <span class="label-note">config + teste per integrare, inclusiv mesagerie + CRM + calendar</span>
+        </span>
+        <span class="price">2.000 RON</span>
       </div>
+
       <div class="value-row">
-        <span class="label-text">Construcție 2 agenți custom</span>
-        <span class="price">1.800 RON</span>
+        <span class="label-text">
+          Construcție 2 agenți custom pentru afacerea ta
+          <span class="label-note">brief + build + test per agent</span>
+        </span>
+        <span class="price">3.000 RON</span>
       </div>
+
       <div class="value-row">
-        <span class="label-text">Bibliotecă skills pre-configurate</span>
-        <span class="price">600 RON</span>
+        <span class="label-text">
+          Bibliotecă de 5+ skills curate, cu documentație
+          <span class="label-note">skills testate și documentate, nu skills din marketplace community neverificate</span>
+        </span>
+        <span class="price">1.000 RON</span>
       </div>
+
       <div class="value-row">
-        <span class="label-text">30 zile suport async + comunitate privată</span>
-        <span class="price">900 RON</span>
+        <span class="label-text">
+          30 zile suport async + comunitate privată Miez
+          <span class="label-note">echivalent retainer junior DevOps pe o lună</span>
+        </span>
+        <span class="price">1.500 RON</span>
       </div>
-      <div class="total-row">
-        <span class="label-text">Total valoare</span>
-        <span class="price">5.300 RON</span>
-      </div>
+
+      <div class="total-row"><span class="label-text">Total valoare</span><span class="price">10.000 RON</span></div>
 
       <div class="price-today">
-        <div class="price-today-label">Preț prima cohortă — 29 aprilie</div>
+        <div class="price-today-label">Preț introductiv — prima cohortă, 29 aprilie</div>
         <div class="price-today-value">1.000 RON</div>
-        <div class="price-today-note">Următoarele cohorte: 2.500 RON — prețul normal</div>
+        <div class="price-today-ratio">„Valoare raportat la preț: 10×. Prima cohortă publică Miez."</div>
       </div>
     </div>
-
     <p class="lead" style="margin-top: 40px;">De ce atât de jos? Pentru că aceasta e prima cohortă publică Miez. Avem nevoie de 20 de proprietari de business care să parcurgă experiența, să ne dea feedback real și să devină primele studii de caz. În schimb, tu primești prețul de pionier.</p>
   </div>
 </section>
@@ -1259,23 +846,66 @@ footer p {
 <section>
   <div class="container-narrow">
     <span class="section-label">Proof real, nu promisiune</span>
-    <h2>Același stack îl rulăm de 8 luni la PodoCliniq Group.</h2>
+    <h2>Același stack îl rulăm de 8 luni la PodoCliniq.</h2>
     <p class="lead">Nu predăm din cărți sau din cursuri americane traduse. Predăm din infrastructura pe care o rulăm zilnic la un grup de clinici de podologie din București — 11 tehnicieni, 6 entități SRL, ~19.000 vizite procesate în 2025.</p>
-
     <div class="proof-card">
       <h3>5 agenți în producție la PodoCliniq</h3>
       <ul class="proof-list">
-        <li><strong>Recepție WhatsApp automatizată</strong> — răspunde la ~40 mesaje/zi fără intervenție umană</li>
+        <li><strong>Recepție WhatsApp automatizată</strong> — procesează ~40 mesaje/zi fără intervenție umană</li>
         <li><strong>Generare contracte</strong> din datele din CRM, cu formatare personalizată pe entitate SRL</li>
         <li><strong>Raportare zilnică</strong> pe telefonul fondatorului — cifre, anomalii, todo-uri</li>
         <li><strong>Moderare întrebări</strong> + rutare automată la specialiști medicali</li>
-        <li><strong>[în curs] Sincronizare MedSoft</strong> — agent care face acțiuni într-un SaaS medical FĂRĂ API</li>
+        <li><strong>[în curs] Sincronizare MedSoft</strong> — agent care citește un SaaS medical cu API limitat</li>
       </ul>
-
       <div class="proof-highlight">
         <h4>Agentul MedSoft — de ce contează</h4>
-        <p>MedSoft este SaaS-ul medical românesc folosit de sute de clinici. Nu are API public. Soluția clasică pentru integrare? Copy-paste manual.</p>
-        <p style="margin-top: 12px;">Soluția Miez? Un agent OpenClaw care se loghează, navighează interfața, extrage datele și declanșează acțiuni — exact ca un om. Asta face Miez fundamental diferit: <strong style="color: var(--chihlimbar);">nu depindem de API-urile pe care le au SaaS-urile tale. Funcționăm pe ce AI, nu pe ce ar trebui să ai.</strong></p>
+        <p>MedSoft este SaaS-ul medical românesc folosit de sute de clinici. Nu are API complet. Soluția clasică pentru a extrage date? Copy-paste manual.</p>
+        <p style="margin-top: 12px;">Soluția Miez? Un agent care combină API-ul parțial cu skills dedicate — extrage ce se poate extrage programmatic, acționează pe restul. Asta face Miez fundamental diferit: <strong style="color: var(--chihlimbar);">construim agenți care folosesc tot ce au la dispoziție — API, browser automation, fișiere — ca să lucreze cu SaaS-urile pe care le ai deja.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COORDINATORS -->
+<section>
+  <div class="container-narrow">
+    <span class="section-label">Cine te învață</span>
+    <h2>Doi antreprenori cu obsesia execuției reale, plus o echipă tehnică care lucrează activ cu tine.</h2>
+    <p class="lead">Nu traineri profesioniști care predau din cărți. Oameni care construiesc businessuri zilnic, folosesc stack-ul AI în operațiuni reale și au ajuns să înțeleagă ce merge și ce nu prin încercare, eșec și iterare.</p>
+    <div class="coordinators-grid">
+      <div class="coordinator">
+        <div class="coordinator-name">George Timbur</div>
+        <div class="coordinator-role">Fondator · Operator AI</div>
+        <p class="coordinator-bio">Fondator <strong>PodoCliniq</strong> — grup de clinici de podologie din București cu 11 tehnicieni și ~19.000 vizite procesate în 2025. Și <strong>ascutzit.ro</strong> — business de sharpening și distribuție de unelte profesionale. Rulează stack-ul AI zilnic în ambele operațiuni: agenți de recepție, generare contracte, raportare, sincronizare cu SaaS-uri închise. Ce predă la atelier nu e teorie — e ce folosește marți dimineața.</p>
+        <div class="coordinator-links">
+          <a href="https://podocliniq.ro" target="_blank" rel="noopener">podocliniq.ro</a>
+          <a href="https://ascutzit.ro" target="_blank" rel="noopener">ascutzit.ro</a>
+        </div>
+      </div>
+      <div class="coordinator">
+        <div class="coordinator-name">Dendea Costin</div>
+        <div class="coordinator-role">Co-host · Antreprenor &amp; Community Builder</div>
+        <p class="coordinator-bio">Antreprenor din 2015, construit în principal în zona de <strong>energie și eficiență energetică</strong>. Fondator <strong>European Business Leaders</strong> și secretar general în cadrul <strong>Fundației pentru o Românie Modernă</strong>. Pasiune puternică pentru IT, automatizare și AI — aduce atelierului perspectiva antreprenorului care a trecut afacerea prin multiple cicluri de adopție tehnologică.</p>
+        <div class="coordinator-links">
+          <a href="https://tosim.ro" target="_blank" rel="noopener">tosim.ro</a>
+          <a href="https://simonelevolt.ro" target="_blank" rel="noopener">simonelevolt.ro</a>
+          <a href="https://eblf.ro" target="_blank" rel="noopener">eblf.ro</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH TEAM block -->
+    <div class="tech-team">
+      <div class="tech-team-icon">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#D4A574" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 12 L6 20 L14 28"/>
+          <path d="M26 12 L34 20 L26 28"/>
+          <line x1="23" y1="8" x2="17" y2="32"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Plus: 2 developeri din echipa tehnică Miez</h4>
+        <p>Pe tot parcursul atelierului, doi developeri Miez lucrează activ alături de tine — nu ca simple prezențe de fundal, ci ca ingineri care configurează live, depanează și răspund la întrebări specifice. Împreună cu George și Dendea, asta face cinci instructori pentru 20 de participanți. Raport 1:4. Nimeni nu rămâne blocat.</p>
       </div>
     </div>
   </div>
@@ -1287,7 +917,6 @@ footer p {
     <span class="section-label">Filtru sincer</span>
     <h2>Dacă e pentru tine, vei ști. Dacă nu, o să-ți spunem direct.</h2>
     <p class="lead">Nu încercăm să vindem atelierul la 7 miliarde de oameni. Vrem să vină cei care fac parte din cohortă și pleacă cu ceva real. Dacă te regăsești în coloana din dreapta, îți recomandăm alte resurse onest.</p>
-
     <div class="for-who-grid">
       <div class="for-who">
         <h3>✓ Atelierul e pentru tine dacă...</h3>
@@ -1306,7 +935,7 @@ footer p {
           <li>Ai e-commerce pur, SaaS company sau tech startup cu echipă tehnică internă</li>
           <li>Ești IT-ist individual care vrea să învețe AI — Miez nu e școală tehnică</li>
           <li>Ești freelancer solo fără echipă — probabil nu ai încă pain-ul de scalare</li>
-          <li>Cauți „cea mai ieftină" opțiune — 1000 RON e preț de pionierat, nu discount</li>
+          <li>Cauți „cea mai ieftină" opțiune — 1000 RON e preț introductiv, nu discount</li>
         </ul>
       </div>
     </div>
@@ -1318,30 +947,29 @@ footer p {
   <div class="container-narrow">
     <span class="section-label">Obiecții reale, răspunsuri directe</span>
     <h2>Ce ne-au spus primii oameni cărora le-am descris atelierul.</h2>
-
     <div class="objection">
       <div class="objection-q">„Nu sunt tehnic. Nu o să mă descurc."</div>
-      <p class="objection-a">Nu trebuie să fii. Noi facem toată partea de setup VM + securitate + instalare OpenClaw înainte să ajungi la atelier. La atelier, partea ta e să ne spui <em>ce</em> vrei să automatizezi. Noi traducem în agent. Pleci cu un sistem pe care îl extinzi, nu pe care îl pornești de la zero.</p>
+      <p class="objection-a">Nu trebuie să fii. Noi facem toată partea de setup VM + securitate + instalare OpenClaw înainte să ajungi la atelier. La atelier, partea ta e să ne spui <em>ce</em> vrei să automatizezi. Noi traducem în agent. Cei 2 developeri din echipa Miez sunt lângă tine pe tot parcursul zilei. Pleci cu un sistem pe care îl extinzi, nu pe care îl pornești de la zero.</p>
     </div>
-
     <div class="objection">
       <div class="objection-q">„E prea devreme să investesc în AI pentru afacerea mea."</div>
       <p class="objection-a">Poate. Dar „devreme" nu e întotdeauna un dușman. Restul pieței stă pe loc așteptând „momentul potrivit". Tu poți avea infrastructura AI înainte să o aibă concurența. Asta e avantaj competitiv real, nu teoretic.</p>
     </div>
-
     <div class="objection">
       <div class="objection-q">„1000 RON e mult pentru o zi."</div>
       <p class="objection-a">1000 RON = două subscripții SaaS lunare pe care le plătești deja. Sau două ore de consultant IT junior. Sau jumătate de masă la un restaurant decent. Pentru un atelier care te echipează cu infrastructură pe care construiești ani.</p>
     </div>
-
     <div class="objection">
       <div class="objection-q">„De unde știu că livrați ce promiteți?"</div>
       <p class="objection-a">Vezi cazul PodoCliniq de mai sus. Verificabil. Poți vorbi direct cu echipa lor dacă vrei o referință. Iar dacă după prima oră de atelier consideri că nu e pentru tine — vezi garanția de mai jos.</p>
     </div>
-
     <div class="objection">
-      <div class="objection-q">„Ce se întâmplă dacă ce construim miercuri se strică peste 2 săptămâni?"</div>
-      <p class="objection-a">30 zile suport async inclus. Ne scrii pe comunitate, răspundem. Dacă e bug fundamental (nu greșeală de utilizare), noi rezolvăm. Dacă e nevoie de update pentru că un SaaS s-a schimbat, îți arătăm cum.</p>
+      <div class="objection-q">„Dacă ce construim miercuri se strică peste 2 săptămâni?"</div>
+      <p class="objection-a">Pentru asta sunt cele 30 de zile de suport async incluse în atelier. Ne scrii pe comunitate, răspundem. Dacă e bug fundamental (nu greșeală de utilizare), noi rezolvăm. Dacă e nevoie de update pentru că un SaaS s-a schimbat, îți arătăm cum.</p>
+    </div>
+    <div class="objection">
+      <div class="objection-q">„Nu e periculos să rulez un agent AI cu acces la datele clienților?"</div>
+      <p class="objection-a">Întrebarea bună. Răspunsul onest: <em>dacă nu setezi securitatea corect, da.</em> Asta e 30% din conținutul atelierului: hardening VM, separare credențiale, audit log, skills doar din bibliotecă vetted, nu din marketplace. Miez livrează un sistem cu limite clare — nu un agent cu root access la tot.</p>
     </div>
   </div>
 </section>
@@ -1369,32 +997,13 @@ footer p {
     <span class="section-label">Ce aduci tu</span>
     <h2>Ca ziua să fie productivă, vei avea nevoie de câteva lucruri.</h2>
     <p class="lead">Nu te speria — cu o săptămână înainte de atelier îți trimitem un ghid detaliat de pregătire, personalizat pe business-ul tău. Mai jos e lista generală.</p>
-
     <div class="prereq-grid">
-      <div class="prereq-item">
-        <h4>Laptop propriu</h4>
-        <p style="margin: 0;">Windows, Mac sau Linux, cu Chrome sau Chromium instalat. Nimic special de hardware — orice laptop modern e suficient.</p>
-      </div>
-      <div class="prereq-item">
-        <h4>Cont Anthropic Claude API</h4>
-        <p style="margin: 0;">Cu minim <strong>$10 credit</strong>. Îți explicăm în pre-workshop cum să îl creezi și să încarci credit (durează ~5 min).</p>
-      </div>
-      <div class="prereq-item">
-        <h4>Credențiale de acces</h4>
-        <p style="margin: 0;">La SaaS-urile pe care le folosești: CRM, calendar, email business, social media, facturare. Cu cât mai ordonate datele, cu atât mai multe integrări reușim.</p>
-      </div>
-      <div class="prereq-item">
-        <h4>Listă cu procese repetitive</h4>
-        <p style="margin: 0;">3–5 procese din afacerea ta pe care le vezi repetitive sau gât-de-sticlă. Pe acestea construim agenții împreună.</p>
-      </div>
-      <div class="prereq-item">
-        <h4>Disponibilitate mentală</h4>
-        <p style="margin: 0;">8 ore intensive. Fără reuniuni paralele, fără intervenții de la birou. Ziua e pentru atelier, nu pentru multitasking.</p>
-      </div>
-      <div class="prereq-item">
-        <h4>Deschidere la întrebări</h4>
-        <p style="margin: 0;">Cel mai valoros lucru pe care îl poți aduce e <strong>claritate despre afacerea ta</strong>. Noi aducem partea tehnică.</p>
-      </div>
+      <div class="prereq-item"><h4>Laptop propriu</h4><p style="margin: 0;">Windows, Mac sau Linux, cu Chrome sau Chromium instalat. Nimic special de hardware — orice laptop modern e suficient.</p></div>
+      <div class="prereq-item"><h4>Cont Anthropic Claude API</h4><p style="margin: 0;">Cu minim <strong>$10 credit</strong>. Îți explicăm în pre-workshop cum să îl creezi și să încarci credit (durează ~5 min).</p></div>
+      <div class="prereq-item"><h4>Credențiale de acces</h4><p style="margin: 0;">La SaaS-urile pe care le folosești: CRM, calendar, email business, mesagerie, facturare. Cu cât mai ordonate datele, cu atât mai multe integrări reușim.</p></div>
+      <div class="prereq-item"><h4>Listă cu procese repetitive</h4><p style="margin: 0;">3–5 procese din afacerea ta pe care le vezi repetitive sau gât-de-sticlă. Pe acestea construim agenții împreună.</p></div>
+      <div class="prereq-item"><h4>Disponibilitate mentală</h4><p style="margin: 0;">8 ore intensive. Fără reuniuni paralele, fără intervenții de la birou. Ziua e pentru atelier, nu pentru multitasking.</p></div>
+      <div class="prereq-item"><h4>Deschidere la întrebări</h4><p style="margin: 0;">Cel mai valoros lucru pe care îl poți aduce e <strong>claritate despre afacerea ta</strong>. Noi aducem partea tehnică.</p></div>
     </div>
   </div>
 </section>
@@ -1403,24 +1012,13 @@ footer p {
 <section class="scarcity-section">
   <div class="container-narrow">
     <span class="section-label">Scarcity reală</span>
-    <h2>20 locuri. O zi. Un singur preț de lansare.</h2>
-    <p class="lead">Nu e urgență fabricată. E matematica atelierului: o sală în Sector 2, o echipă Miez, o singură dată la acest preț. După această cohortă, prețul devine normal — 2500 RON.</p>
-
+    <h2>20 locuri. O zi. Un singur preț introductiv.</h2>
+    <p class="lead">Nu e urgență fabricată. E matematica atelierului: o sală în Sector 2, o echipă Miez, cinci instructori (George, Dendea, 2 developeri, asistent tehnic) pentru 20 de participanți. Raport 1:4 la întrebări tehnice.</p>
     <div class="scarcity-numbers">
-      <div class="scarcity-num">
-        <span class="big">20</span>
-        <span class="label">Locuri disponibile</span>
-      </div>
-      <div class="scarcity-num">
-        <span class="big">29</span>
-        <span class="label">Aprilie 2026</span>
-      </div>
-      <div class="scarcity-num">
-        <span class="big">1000</span>
-        <span class="label">RON preț de lansare</span>
-      </div>
+      <div class="scarcity-num"><span class="big">20</span><span class="label">Locuri disponibile</span></div>
+      <div class="scarcity-num"><span class="big">29</span><span class="label">Aprilie 2026</span></div>
+      <div class="scarcity-num"><span class="big">1000</span><span class="label">RON preț introductiv</span></div>
     </div>
-
     <p style="text-align: center; margin-top: 32px;">Prima cohortă publică Miez. Ce începe miercuri continuă pe <strong style="color: var(--chihlimbar);">miez.digital</strong>.</p>
   </div>
 </section>
@@ -1430,28 +1028,14 @@ footer p {
   <div class="container">
     <div class="form-card">
       <h2>Rezervă locul.</h2>
-      <p class="form-sub">Completezi formularul, primești link de plată securizată, confirmarea îți ajunge pe email în 2 minute.</p>
-
+      <p class="form-sub">Completezi formularul, primești confirmarea pe email în 2 minute și te contactăm în maxim 24h pe telefon pentru link-ul de plată securizat.</p>
       <form name="inscriere-atelier" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="signupForm">
         <input type="hidden" name="form-name" value="inscriere-atelier" />
         <p style="display:none;"><label>Nu completa: <input name="bot-field" /></label></p>
-        
-        <div class="form-field">
-          <label for="nume">Nume complet</label>
-          <input type="text" id="nume" name="nume" required placeholder="Prenume și nume">
-        </div>
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="email@afacerea-ta.ro">
-        </div>
-        <div class="form-field">
-          <label for="telefon">Telefon</label>
-          <input type="tel" id="telefon" name="telefon" required placeholder="07XX XXX XXX">
-        </div>
-        <div class="form-field">
-          <label for="firma">Numele afacerii</label>
-          <input type="text" id="firma" name="firma" required placeholder="Ex: Clinica Dr. Popescu, Salon Luna">
-        </div>
+        <div class="form-field"><label for="nume">Nume complet</label><input type="text" id="nume" name="nume" required placeholder="Prenume și nume"></div>
+        <div class="form-field"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="email@afacerea-ta.ro"></div>
+        <div class="form-field"><label for="telefon">Telefon</label><input type="tel" id="telefon" name="telefon" required placeholder="07XX XXX XXX"></div>
+        <div class="form-field"><label for="firma">Numele afacerii</label><input type="text" id="firma" name="firma" required placeholder="Ex: Clinica Dr. Popescu, Salon Luna"></div>
         <div class="form-field">
           <label for="industrie">Industrie</label>
           <select id="industrie" name="industrie" required>
@@ -1464,17 +1048,21 @@ footer p {
             <option value="altele">Alte servicii B2C</option>
           </select>
         </div>
-        <button type="submit" class="form-submit">Continuă la plată — 1000 RON →</button>
-      </form>
 
+        <div class="form-consent">
+          <input type="checkbox" id="gdpr" name="gdpr" required>
+          <label for="gdpr">Sunt de acord cu prelucrarea datelor personale conform <a href="/politica-confidentialitate" target="_blank">Politicii de Confidențialitate</a> și cu <a href="/termeni-si-conditii" target="_blank">Termenii și Condițiile</a>. Datele furnizate vor fi folosite exclusiv pentru organizarea atelierului și comunicarea cu mine.</label>
+        </div>
+
+        <button type="submit" class="form-submit">Rezervă locul — 1000 RON →</button>
+      </form>
       <div id="formSuccess" style="display:none; text-align:center; padding:40px 20px;">
         <div style="font-size:56px; margin-bottom:16px;">✓</div>
         <h3 style="color:var(--chihlimbar); font-family:var(--font-display); font-size:28px; margin-bottom:16px;">Înscrierea a fost primită!</h3>
-        <p style="color:rgba(245,240,230,0.9); font-size:17px; margin-bottom:12px;">Te contactăm pe telefon în maxim 24h pentru confirmare și link-ul de plată securizat.</p>
+        <p style="color:rgba(245,240,230,0.9); font-size:17px; margin-bottom:12px;">Te contactăm pe telefon în maxim 24h pentru confirmare și link-ul de plată securizat. După confirmarea plății, primești și adresa exactă a atelierului.</p>
         <p style="color:rgba(245,240,230,0.7); font-size:14px;">Verifică și inbox-ul — ți-am trimis detaliile pe email.</p>
       </div>
-
-      <p class="form-note">Plata se face securizat prin Stripe. Datele tale rămân la tine.</p>
+      <p class="form-note">Plata se procesează securizat printr-un procesator certificat PCI-DSS. Datele tale rămân la tine.</p>
     </div>
   </div>
 </section>
@@ -1484,45 +1072,45 @@ footer p {
   <div class="container-narrow">
     <span class="section-label">Întrebări frecvente</span>
     <h2>Întrebări pe care ni le-au pus primii curioși.</h2>
-
+    <div class="faq-item">
+      <div class="faq-q">Unde exact se ține atelierul?</div>
+      <p class="faq-a">Într-o locație dedicată din <strong>Sector 2, București</strong>, selectată pentru liniște și infrastructură tehnică. Adresa exactă se comunică <strong>după confirmarea plății</strong>, împreună cu ghidul de pregătire personalizat. Grupul e mic (20 de participanți) pentru ca echipa tehnică să poată să lucreze 1-on-1 cu fiecare.</p>
+    </div>
     <div class="faq-item">
       <div class="faq-q">Cât mă costă să rulez OpenClaw după atelier?</div>
-      <p class="faq-a">VM-ul propriu costă 20–40 EUR/lună (Hetzner, DigitalOcean, similar). Claude API costă $0.001–$0.01 per acțiune de agent — pentru un business B2C tipic, $10–50/lună funcție de volum. Total: ~100–200 EUR/lună pentru infrastructură completă AI. Pentru context: un singur SaaS „AI-powered" generic costă la fel sau mai mult, și te închide în ecosistemul lui.</p>
+      <p class="faq-a">VM-ul propriu costă 20–40 EUR/lună (Hetzner, DigitalOcean, similar). Claude API costă $0.001–$0.01 per acțiune de agent — pentru un business B2C tipic, $10–50/lună funcție de volum. Total: ~100–200 EUR/lună pentru infrastructură completă AI. Pentru context: un singur SaaS „AI-powered" generic costă la fel sau mai mult și te închide în ecosistemul lui.</p>
     </div>
-
+    <div class="faq-item">
+      <div class="faq-q">E sigur? OpenClaw are acces la datele mele.</div>
+      <p class="faq-a">E sigur <em>dacă îl setezi corect</em>. Asta înseamnă: mașină virtuală izolată (nu pe laptop-ul personal), credențiale separate pentru fiecare SaaS, firewall cu listă de IP-uri permise, audit log activat, skills doar din bibliotecă curată de Miez (nu din marketplace community). Aceasta e o parte importantă a atelierului — nu „cum să faci agenți", ci „cum să faci agenți fără să-ți expui datele". Pentru business-urile care țin date sensibile (clinici medicale, cabinete), Miez recomandă un audit de securitate suplimentar la 2 săptămâni post-atelier.</p>
+    </div>
     <div class="faq-item">
       <div class="faq-q">Ce dacă nu am prea multe SaaS-uri sau datele nu sunt ordonate?</div>
       <p class="faq-a">Cu atât mai bine. OpenClaw poate interacționa cu aproape orice sistem — inclusiv unul neordonat. Pornim cu ce ai. În ziua de atelier, o parte din muncă e chiar să clarificăm care date sunt unde și cum să le facem accesibile.</p>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">Cine livrează efectiv atelierul?</div>
-      <p class="faq-a">Echipa Miez Digital, coordonată de fondator George Gheorghe — care folosește stack-ul zilnic la PodoCliniq Group. Structură: 2 instructori + asistenți tehnici pentru cohorta de 20 de oameni.</p>
+      <p class="faq-a">Atelierul e coordonat de <strong>George Timbur</strong> — fondator PodoCliniq și ascutzit.ro, care rulează stack-ul AI zilnic în ambele afaceri. Co-host: <strong>Dendea Costin</strong> — antreprenor din 2015 în energie și eficiență energetică, fondator European Business Leaders. Plus <strong>2 developeri din echipa tehnică Miez</strong> care lucrează activ alături de voi pe tot parcursul zilei. Raport 1:4 instructor–participant la întrebări tehnice.</p>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">Dacă pierd ziua din motive urgente, pot transfera la o cohortă viitoare?</div>
-      <p class="faq-a">Da. Rezerva se transferă la oricare din următoarele 2 cohorte anunțate, la prețul tău actual (1000 RON), nu la prețul nou de 2500.</p>
+      <p class="faq-a">Da. Rezerva se transferă la oricare din următoarele 2 cohorte anunțate, la prețul tău actual (1000 RON), indiferent de prețul de atunci.</p>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">E online-friendly sau doar fizic?</div>
-      <p class="faq-a">Această cohortă e exclusiv fizică, în Sector 2, București. Pentru calitatea setup-ului inițial de OpenClaw pe VM-uri, prima cohortă e intenționat fizică. Viitoare cohorte pot avea format online.</p>
+      <p class="faq-a">Această cohortă e exclusiv fizică, în Sector 2, București. Pentru calitatea setup-ului inițial de OpenClaw pe VM-uri, prima cohortă e intenționat fizică. Cohortele viitoare pot avea format online.</p>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">Pot veni cu partenerul / co-fondatorul / angajatul responsabil?</div>
       <p class="faq-a">Da — al doilea participant din aceeași firmă are 30% discount (700 RON în loc de 1000). Contactează-ne înainte să faci a doua rezervare.</p>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q">Când se închid înscrierile și până când e disponibil prețul de 1000 RON?</div>
-      <p class="faq-a">Înscrierile sunt deschise acum. Prețul de 1000 RON e valid până la completarea celor 20 de locuri SAU până la 24 aprilie ora 23:59, oricare vine primul.</p>
+      <div class="faq-q">Când se închid înscrierile?</div>
+      <p class="faq-a">Înscrierile sunt deschise acum. Prețul introductiv de 1000 RON e valid până la completarea celor 20 de locuri SAU până la 24 aprilie ora 23:59, oricare vine primul.</p>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">Ce e exact un „agent AI" în contextul ăsta?</div>
-      <p class="faq-a">Un program care primește un obiectiv (ex: „răspunde la mesajele Instagram cu informații despre program"), înțelege contextul folosind Claude, și execută acțiunile necesare — citește mesaje, caută în datele tale, formulează răspuns, trimite. Pentru tine funcționează ca un angajat digital care nu doarme și nu obosește. Pentru noi e un program de ~200 linii de cod, construit împreună cu tine.</p>
+      <p class="faq-a">Un program care primește un obiectiv (ex: „răspunde la mesajele Instagram cu informații despre program"), înțelege contextul folosind Claude și execută acțiunile necesare — citește mesaje, caută în datele tale, formulează răspuns, trimite. Pentru tine funcționează ca un angajat digital care nu doarme și nu obosește. Pentru noi e un program de ~200 linii de cod, construit împreună cu tine.</p>
     </div>
   </div>
 </section>
@@ -1531,7 +1119,7 @@ footer p {
 <section class="final-section">
   <div class="container-narrow">
     <span class="section-label">Miercuri 29 aprilie</span>
-    <h2>La 9 dimineața, tu ești în sala din Sector 2. La 5 după-amiaza, pleci cu <em>primul tău agent AI</em> rulând pe o mașină a ta.</h2>
+    <h2>La 9 dimineața, tu ești în sala din Sector 2. La 17:00, pleci cu <em>primul tău agent AI</em> rulând pe o mașină virtuală a ta.</h2>
     <p class="lead">Între cele două momente, construim împreună miezul infrastructurii tale digitale.</p>
     <a href="#inscriere" class="btn-primary">Rezervă locul — 1000 RON →</a>
   </div>
@@ -1539,48 +1127,33 @@ footer p {
 
 <footer>
   <div class="container">
-    <p>Miez Digital · <a href="https://miez.digital">miez.digital</a> · Parte din ecosistemul PodoCliniq Group</p>
-    <p style="margin-top: 8px; font-size: 12px;">Copyright © 2026 Miez Digital. Infrastructură AI construită, nu închiriată.</p>
+    <div class="footer-inner">
+      <p>Miez Digital · <a href="https://miez.digital">miez.digital</a> · operat de SOFT VIBE S.R.L., Parcul IT Moldova</p>
+      <div class="footer-legal">
+        <a href="/politica-confidentialitate">Politica de Confidențialitate</a>
+        <a href="/termeni-si-conditii">Termeni și Condiții</a>
+        <a href="/politica-cookies">Politica Cookies</a>
+        <a href="mailto:contact@miez.digital">contact@miez.digital</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 12px;">Copyright © 2026 Miez Digital. Infrastructură AI construită, nu închiriată.</p>
+    </div>
   </div>
 </footer>
 
-<script>
-// Try to load uploaded logo image; fall back to SVG if not found
-(async function loadLogo() {
-  if (typeof window.fs === 'undefined' || !window.fs.readFile) return;
-  
-  // Common filenames Claude interface uses for uploaded images
-  const candidates = [
-    'image.png', 'image.jpg', 'image.jpeg',
-    'logo.png', 'logo.jpg',
-    'miez.png', 'miez-logo.png',
-    'IMG_0001.png', 'IMG_0001.jpg',
-    'photo.png', 'photo.jpg'
-  ];
-  
-  for (const name of candidates) {
-    try {
-      const data = await window.fs.readFile(name);
-      const ext = name.split('.').pop().toLowerCase();
-      const mime = ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : 'image/png';
-      const blob = new Blob([data], { type: mime });
-      const url = URL.createObjectURL(blob);
-      const img = document.getElementById('logo-img');
-      const svg = document.getElementById('logo-svg');
-      if (img && svg) {
-        img.src = url;
-        img.style.display = 'block';
-        svg.style.display = 'none';
-        console.log('Loaded uploaded logo:', name);
-      }
-      return;
-    } catch (e) {
-      // Try next filename
-    }
-  }
-  console.log('No uploaded image found, using SVG fallback');
-})();
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consimțământ cookies">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      Folosim cookies pentru analiză și optimizarea experienței (inclusiv Meta Pixel pentru măsurare campanii). Tu decizi. Citește <a href="/politica-cookies">politica cookies</a>.
+    </div>
+    <div class="cookie-buttons">
+      <button type="button" class="cookie-btn" id="cookieReject">Doar cele esențiale</button>
+      <button type="button" class="cookie-btn accept" id="cookieAccept">Accept toate</button>
+    </div>
+  </div>
+</div>
 
+<script>
 // Fade-in animations on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1595,7 +1168,31 @@ document.querySelectorAll('section > .container, section > .container-narrow').f
   observer.observe(el);
 });
 
-// Handle form submission with inline success (no redirect needed)
+// Cookie consent
+(function(){
+  const banner = document.getElementById('cookieBanner');
+  const accept = document.getElementById('cookieAccept');
+  const reject = document.getElementById('cookieReject');
+
+  let consent = null;
+  try { consent = localStorage.getItem('miezCookieConsent'); } catch(e){}
+
+  if (!consent) {
+    setTimeout(() => banner.classList.add('show'), 600);
+  }
+
+  accept.addEventListener('click', () => {
+    try { localStorage.setItem('miezCookieConsent', 'accept'); } catch(e){}
+    banner.classList.remove('show');
+    if (typeof window._miezLoadPixel === 'function') window._miezLoadPixel();
+  });
+  reject.addEventListener('click', () => {
+    try { localStorage.setItem('miezCookieConsent', 'reject'); } catch(e){}
+    banner.classList.remove('show');
+  });
+})();
+
+// Handle form submission with inline success
 const form = document.getElementById('signupForm');
 const success = document.getElementById('formSuccess');
 
@@ -1603,20 +1200,19 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
-    
+
     try {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
       });
-      
+
       if (response.ok) {
         form.style.display = 'none';
         success.style.display = 'block';
-        // Scroll to success message
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // Track Facebook Pixel Lead event
+        // Track Facebook Pixel Lead event (only if consented)
         if (typeof fbq !== 'undefined') {
           fbq('track', 'Lead', {
             content_name: 'Atelier Miez OpenClaw 101',
